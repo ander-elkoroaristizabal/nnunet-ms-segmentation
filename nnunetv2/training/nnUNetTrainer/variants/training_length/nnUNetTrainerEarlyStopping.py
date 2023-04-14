@@ -54,10 +54,10 @@ class EarlyStopping:
             if not self.cumulative_delta and new_score > self.best_score:
                 self.best_score = new_score
             self.counter += 1
-            self.logger.debug("EarlyStopping: %i / %i" % (self.counter, self.patience))
+            print("EarlyStopping: %i / %i" % (self.counter, self.patience))
             # Checking patience:
             if self.counter >= self.patience:
-                self.logger.info("EarlyStopping: Stop training")
+                self.logger.print_to_log_file("EarlyStopping: Stop training")
                 return True
             else:
                 return False
