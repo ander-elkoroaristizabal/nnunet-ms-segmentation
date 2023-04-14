@@ -124,7 +124,7 @@ class nnUNetTrainerEarlyStopping(nnUNetTrainer):
                 self.on_validation_epoch_end(val_outputs)
 
             self.on_epoch_end()
-            if self.early_stopping.stop_training(new_score=self.logger.my_fantastic_logging['mean_fg_dice'][-1]):
+            if self.early_stopping.stop_training(new_score=self.logger.my_fantastic_logging['ema_fg_dice'][-1]):
                 break
 
         self.on_train_end()
