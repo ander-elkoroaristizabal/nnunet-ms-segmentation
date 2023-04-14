@@ -110,6 +110,7 @@ ENV/
 *.png
 *.jpg
 *.jpeg
+*.pth
 
 *.model
 
