@@ -57,7 +57,6 @@ class EarlyStopping:
             print("EarlyStopping: %i / %i" % (self.counter, self.patience))
             # Checking patience:
             if self.counter >= self.patience:
-                self.logger.print_to_log_file("EarlyStopping: Stop training")
                 return True
             else:
                 return False
@@ -125,6 +124,7 @@ class nnUNetTrainerEarlyStopping(nnUNetTrainer):
 
             self.on_epoch_end()
             if self.early_stopping.stop_training(new_score=self.logger.my_fantastic_logging['ema_fg_dice'][-1]):
+                self.print_to_log_file("EarlyStopping: Stop training")
                 break
 
         self.on_train_end()
