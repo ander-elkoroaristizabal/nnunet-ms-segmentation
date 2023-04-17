@@ -16,4 +16,4 @@ nnUNetv2_train 100 $conf 3 -device cuda -tr $trainer --npz
 nnUNetv2_train 100 $conf 4 -device cuda -tr $trainer --npz
 
 # Find best configuration:
-nnUNetv2_find_best_configuration 100 -c $conf
+nnUNetv2_find_best_configuration 100 -c $conf -tr $trainer
