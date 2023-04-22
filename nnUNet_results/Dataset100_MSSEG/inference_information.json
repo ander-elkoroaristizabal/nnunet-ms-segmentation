@@ -1,11 +1,11 @@
 {
     "all_results": {
-        "nnUNetTrainerEarlyStopping__nnUNetPlans__3d_fullres": 0.3637451636673195
+        "nnUNetTrainerEarlyStopping__nnUNetPlans__3d_fullres": 0.5344056618603195
     },
     "best_model_or_ensemble": {
         "postprocessing_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerEarlyStopping__nnUNetPlans__3d_fullres/crossval_results_folds_0_1_2_3_4/postprocessing.pkl",
-        "result_on_crossval_post_pp": 0.3637451636673195,
-        "result_on_crossval_pre_pp": 0.3637451636673195,
+        "result_on_crossval_post_pp": 0.5344056618603195,
+        "result_on_crossval_pre_pp": 0.5344056618603195,
         "selected_model_or_models": [
             {
                 "configuration": "3d_fullres",
