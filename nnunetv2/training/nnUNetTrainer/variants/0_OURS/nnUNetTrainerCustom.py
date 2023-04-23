@@ -146,3 +146,18 @@ class nnUNetTrainerHalfOversamplingEarlyStopping(nnUNetTrainerEarlyStopping, nnU
         super().__init__(plans, configuration, fold, dataset_json, unpack_dataset, device)
         self.oversample_foreground_percent = 0.5
         self.print_to_log_file("Final oversample percent:", self.oversample_foreground_percent)
+
+
+class nnUNetTrainerFullOversamplingEarlyStopping(nnUNetTrainerEarlyStopping, nnUNetTrainer_probabilisticOversampling):
+    def __init__(
+            self,
+            plans: dict,
+            configuration: str,
+            fold: int,
+            dataset_json: dict,
+            unpack_dataset: bool = True,
+            device: torch.device = torch.device('cuda')
+    ):
+        super().__init__(plans, configuration, fold, dataset_json, unpack_dataset, device)
+        self.oversample_foreground_percent = 1
+        self.print_to_log_file("Final oversample percent:", self.oversample_foreground_percent)
