@@ -18,7 +18,16 @@ class nnUNetDataLoaderBase(DataLoader):
                  sampling_probabilities: Union[List[int], Tuple[int, ...], np.ndarray] = None,
                  pad_sides: Union[List[int], Tuple[int, ...], np.ndarray] = None,
                  probabilistic_oversampling: bool = False):
-        super().__init__(data, batch_size, 1, None, True, False, True, sampling_probabilities)
+        super().__init__(
+            data=data,
+            batch_size=batch_size,
+            num_threads_in_multithreaded=1,
+            seed_for_shuffle=None,
+            return_incomplete=True,
+            shuffle=False,
+            infinite=True,
+            sampling_probabilities=sampling_probabilities
+        )
         assert isinstance(data, nnUNetDataset), 'nnUNetDataLoaderBase only supports dictionaries as data'
         self.indices = list(data.keys())
 
@@ -104,7 +113,8 @@ class nnUNetDataLoaderBase(DataLoader):
                 # if we have annotated_classes_key locations and other classes are present, remove the annotated_classes_key from the list
                 # strange formulation needed to circumvent
                 # ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
-                tmp = [i == self.annotated_classes_key if isinstance(i, tuple) else False for i in eligible_classes_or_regions]
+                tmp = [i == self.annotated_classes_key if isinstance(i, tuple) else False for i in
+                       eligible_classes_or_regions]
                 if any(tmp):
                     if len(eligible_classes_or_regions) > 1:
                         eligible_classes_or_regions.pop(np.where(tmp)[0][0])
@@ -118,7 +128,8 @@ class nnUNetDataLoaderBase(DataLoader):
                     # I hate myself. Future me aint gonna be happy to read this
                     # 2022_11_25: had to read it today. Wasn't too bad
                     selected_class = eligible_classes_or_regions[np.random.choice(len(eligible_classes_or_regions))] if \
-                        (overwrite_class is None or (overwrite_class not in eligible_classes_or_regions)) else overwrite_class
+                        (overwrite_class is None or (
+                                overwrite_class not in eligible_classes_or_regions)) else overwrite_class
                 # print(f'I want to have foreground, selected class: {selected_class}')
             else:
                 raise RuntimeError('lol what!?')
