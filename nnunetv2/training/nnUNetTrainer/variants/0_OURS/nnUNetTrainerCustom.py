@@ -4,6 +4,9 @@ from nnunetv2.training.nnUNetTrainer.nnUNetTrainer import nnUNetTrainer
 
 from typing import Optional, Dict, cast
 
+from nnunetv2.training.nnUNetTrainer.variants.sampling.nnUNetTrainer_probabilisticOversampling import \
+    nnUNetTrainer_probabilisticOversampling
+
 
 class EarlyStopping:
     """EarlyStopping handler can be used to stop the training if no improvement after a given number of events.
@@ -128,3 +131,18 @@ class nnUNetTrainerEarlyStopping(nnUNetTrainer):
                 break
 
         self.on_train_end()
+
+
+class nnUNetTrainerHalfOversamplingEarlyStopping(nnUNetTrainerEarlyStopping, nnUNetTrainer_probabilisticOversampling):
+    def __init__(
+            self,
+            plans: dict,
+            configuration: str,
+            fold: int,
+            dataset_json: dict,
+            unpack_dataset: bool = True,
+            device: torch.device = torch.device('cuda')
+    ):
+        super().__init__(plans, configuration, fold, dataset_json, unpack_dataset, device)
+        self.oversample_foreground_percent = 0.5
+        self.print_to_log_file("Final oversample percent:", self.oversample_foreground_percent)
