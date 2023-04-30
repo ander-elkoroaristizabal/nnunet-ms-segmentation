@@ -127,6 +127,9 @@ class nnUNetDataLoaderBase(DataLoader):
                 else:
                     # I hate myself. Future me aint gonna be happy to read this
                     # 2022_11_25: had to read it today. Wasn't too bad
+                    eligible_classes_or_regions = (
+                        [2] if 2 in eligible_classes_or_regions else eligible_classes_or_regions
+                    )
                     selected_class = eligible_classes_or_regions[np.random.choice(len(eligible_classes_or_regions))] if \
                         (overwrite_class is None or (
                                 overwrite_class not in eligible_classes_or_regions)) else overwrite_class
