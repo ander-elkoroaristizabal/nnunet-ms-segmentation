@@ -1,4 +1,5 @@
 import matplotlib
+import numpy as np
 from batchgenerators.utilities.file_and_folder_operations import join
 
 matplotlib.use('agg')
@@ -14,6 +15,7 @@ class nnUNetLogger(object):
 
     YOU MUST LOG EXACTLY ONE VALUE PER EPOCH FOR EACH OF THE LOGGING ITEMS! DONT FUCK IT UP
     """
+
     def __init__(self, verbose: bool = False):
         self.my_fantastic_logging = {
             'mean_fg_dice': list(),
@@ -60,11 +62,17 @@ class nnUNetLogger(object):
         ax = ax_all[0]
         ax2 = ax.twinx()
         x_values = list(range(epoch + 1))
-        ax.plot(x_values, self.my_fantastic_logging['train_losses'][:epoch + 1], color='b', ls='-', label="loss_tr", linewidth=4)
-        ax.plot(x_values, self.my_fantastic_logging['val_losses'][:epoch + 1], color='r', ls='-', label="loss_val", linewidth=4)
-        ax2.plot(x_values, self.my_fantastic_logging['mean_fg_dice'][:epoch + 1], color='g', ls='dotted', label="pseudo dice",
+        best_epoch = np.argmax(self.my_fantastic_logging['ema_fg_dice'])
+        ax.plot(x_values, self.my_fantastic_logging['train_losses'][:epoch + 1], color='b', ls='-', label="loss_tr",
+                linewidth=4)
+        ax.plot(x_values, self.my_fantastic_logging['val_losses'][:epoch + 1], color='r', ls='-', label="loss_val",
+                linewidth=4)
+        ax2.plot(x_values, self.my_fantastic_logging['mean_fg_dice'][:epoch + 1], color='g', ls='dotted',
+                 label="pseudo dice",
                  linewidth=3)
-        ax2.plot(x_values, self.my_fantastic_logging['ema_fg_dice'][:epoch + 1], color='g', ls='-', label="pseudo dice (mov. avg.)",
+        ax2.axvline(best_epoch, label='best epoch')
+        ax2.plot(x_values, self.my_fantastic_logging['ema_fg_dice'][:epoch + 1], color='g', ls='-',
+                 label="pseudo dice (mov. avg.)",
                  linewidth=4)
         ax.set_xlabel("epoch")
         ax.set_ylabel("loss")
@@ -76,7 +84,8 @@ class nnUNetLogger(object):
         # clogging up the system)
         ax = ax_all[1]
         ax.plot(x_values, [i - j for i, j in zip(self.my_fantastic_logging['epoch_end_timestamps'][:epoch + 1],
-                                                 self.my_fantastic_logging['epoch_start_timestamps'])][:epoch + 1], color='b',
+                                                 self.my_fantastic_logging['epoch_start_timestamps'])][:epoch + 1],
+                color='b',
                 ls='-', label="epoch duration", linewidth=4)
         ylim = [0] + [ax.get_ylim()[1]]
         ax.set(ylim=ylim)
@@ -86,7 +95,8 @@ class nnUNetLogger(object):
 
         # learning rate
         ax = ax_all[2]
-        ax.plot(x_values, self.my_fantastic_logging['lrs'][:epoch + 1], color='b', ls='-', label="learning rate", linewidth=4)
+        ax.plot(x_values, self.my_fantastic_logging['lrs'][:epoch + 1], color='b', ls='-', label="learning rate",
+                linewidth=4)
         ax.set_xlabel("epoch")
         ax.set_ylabel("learning rate")
         ax.legend(loc=(0, 1))
