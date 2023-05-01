@@ -212,3 +212,18 @@ class nnUNetTrainerExtremeOversamplingEarlyStopping(nnUNetTrainerFullOversamplin
                 oversample_foreground_percent=self.oversample_foreground_percent,
                 sampling_probabilities=None, pad_sides=None)
         return dl_tr, dl_val
+
+
+class nnUNetTrainerExtremeOversamplingEarlyStoppingLowLR(nnUNetTrainerExtremeOversamplingEarlyStopping):
+    def __init__(
+            self,
+            plans: dict,
+            configuration: str,
+            fold: int,
+            dataset_json: dict,
+            unpack_dataset: bool = True,
+            device: torch.device = torch.device('cuda')
+    ):
+        super().__init__(plans, configuration, fold, dataset_json, unpack_dataset, device)
+        self.initial_lr = 1e-3
+        self.print_to_log_file("Initial lr:", self.initial_lr)
