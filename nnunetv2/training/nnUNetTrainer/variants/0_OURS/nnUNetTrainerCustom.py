@@ -1,8 +1,10 @@
 import torch
 
+from nnunetv2.training.dataloading.data_loader_2d import nnUNetDataLoader2D
+from nnunetv2.training.dataloading.data_loader_3d import MinorityClassOversampling_nnUNetDataLoader3D
 from nnunetv2.training.nnUNetTrainer.nnUNetTrainer import nnUNetTrainer
 
-from typing import Optional, Dict, cast
+from typing import Optional, Dict, cast, Tuple
 
 from nnunetv2.training.nnUNetTrainer.variants.sampling.nnUNetTrainer_probabilisticOversampling import \
     nnUNetTrainer_probabilisticOversampling
@@ -105,6 +107,7 @@ class nnUNetTrainerEarlyStopping(nnUNetTrainer):
             min_delta=self.min_delta,
             cumulative_delta=self.cumulative_delta
         )
+        self.print_to_log_file("Using early stopping with patience:", self.patience)
 
     def run_training(self):
         self.on_train_start()
@@ -161,3 +164,51 @@ class nnUNetTrainerFullOversamplingEarlyStopping(nnUNetTrainerEarlyStopping, nnU
         super().__init__(plans, configuration, fold, dataset_json, unpack_dataset, device)
         self.oversample_foreground_percent = 1
         self.print_to_log_file("Final oversample percent:", self.oversample_foreground_percent)
+
+
+class nnUNetTrainerExtremeOversamplingEarlyStopping(nnUNetTrainerFullOversamplingEarlyStopping):
+    def __init__(
+            self,
+            plans: dict,
+            configuration: str,
+            fold: int,
+            dataset_json: dict,
+            unpack_dataset: bool = True,
+            device: torch.device = torch.device('cuda')
+    ):
+        super().__init__(plans, configuration, fold, dataset_json, unpack_dataset, device)
+        self.print_to_log_file("Using minority class oversampling.")
+
+    def get_plain_dataloaders(self, initial_patch_size: Tuple[int, ...], dim: int):
+        dataset_tr, dataset_val = self.get_tr_and_val_datasets()
+
+        if dim == 2:
+            dl_tr = nnUNetDataLoader2D(dataset_tr, self.batch_size,
+                                       initial_patch_size,
+                                       self.configuration_manager.patch_size,
+                                       self.label_manager,
+                                       oversample_foreground_percent=self.oversample_foreground_percent,
+                                       sampling_probabilities=None, pad_sides=None)
+            dl_val = nnUNetDataLoader2D(dataset_val, self.batch_size,
+                                        self.configuration_manager.patch_size,
+                                        self.configuration_manager.patch_size,
+                                        self.label_manager,
+                                        oversample_foreground_percent=self.oversample_foreground_percent,
+                                        sampling_probabilities=None, pad_sides=None)
+        else:
+            # TODO Ander 26/4/23: Maybe shuffle=True?
+            dl_tr = MinorityClassOversampling_nnUNetDataLoader3D(
+                dataset_tr, self.batch_size,
+                initial_patch_size,
+                self.configuration_manager.patch_size,
+                self.label_manager,
+                oversample_foreground_percent=self.oversample_foreground_percent,
+                sampling_probabilities=None, pad_sides=None)
+            dl_val = MinorityClassOversampling_nnUNetDataLoader3D(
+                dataset_val, self.batch_size,
+                self.configuration_manager.patch_size,
+                self.configuration_manager.patch_size,
+                self.label_manager,
+                oversample_foreground_percent=self.oversample_foreground_percent,
+                sampling_probabilities=None, pad_sides=None)
+        return dl_tr, dl_val
