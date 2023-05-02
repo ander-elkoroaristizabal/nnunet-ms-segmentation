@@ -8,7 +8,7 @@ nnUNetv2_plan_and_preprocess -d 100 --verify_dataset_integrity
 
 # Train folds (we could also use "all" to train all splits):
 conf=3d_fullres
-trainer=nnUNetTrainerEarlyStopping
+trainer=nnUNetTrainerExtremeOversamplingEarlyStoppingLowLR
 nnUNetv2_train 100 $conf 0 -device cuda -tr $trainer --npz
 nnUNetv2_train 100 $conf 1 -device cuda -tr $trainer --npz
 nnUNetv2_train 100 $conf 2 -device cuda -tr $trainer --npz

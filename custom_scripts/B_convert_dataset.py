@@ -3,20 +3,22 @@ import os
 import json
 import shutil
 
+from custom_scripts.A_config import (
+    ORIGINAL_DATA_PATH,
+    RAW_DATASET_DIR,
+    TRAIN_IMAGES_DIR,
+    TRAIN_LABELS_DIR
+)
+
 warning = "This script should only be ran once. Are you sure you want to run it? [Y]/N"
 if input(warning) != "Y":
     exit()
 
-ROOT = Path(__file__).resolve().parents[1]
-ORIGINAL_DATA_PATH = ROOT / "NEW_LESIONS_IMAGINEM"
-NNUNET_RAW_PATH = ROOT / "data" / "nnUNet_raw_data"
-
 # Create directories
-DATASET_DIR = NNUNET_RAW_PATH / "Dataset100_MSSEG"
 try:
-    os.mkdir(DATASET_DIR)
-    os.mkdir(DATASET_DIR / "imagesTr")
-    os.mkdir(DATASET_DIR / "labelsTr")
+    os.mkdir(RAW_DATASET_DIR)
+    os.mkdir(TRAIN_IMAGES_DIR)
+    os.mkdir(TRAIN_LABELS_DIR)
 except FileExistsError:
     pass
 dataset_json = {
@@ -32,7 +34,7 @@ dataset_json = {
     "numTraining": 117,
     "file_ending": ".nii.gz"
 }
-with open(DATASET_DIR / 'dataset.json', 'w') as f:
+with open(RAW_DATASET_DIR / 'dataset.json', 'w') as f:
     json.dump(dataset_json, f)
 
 # Renaming of files:
@@ -49,6 +51,6 @@ for old_name, new_name in label2newlabel.items():
 
 # Moving of files:
 for image in raw_files:
-    shutil.move(ORIGINAL_DATA_PATH / image, DATASET_DIR / "imagesTr" / image)
+    shutil.move(ORIGINAL_DATA_PATH / image, TRAIN_IMAGES_DIR / image)
 for mask in label2newlabel.values():
-    shutil.move(ORIGINAL_DATA_PATH / mask, DATASET_DIR / "labelsTr" / mask)
+    shutil.move(ORIGINAL_DATA_PATH / mask, TRAIN_LABELS_DIR / mask)
