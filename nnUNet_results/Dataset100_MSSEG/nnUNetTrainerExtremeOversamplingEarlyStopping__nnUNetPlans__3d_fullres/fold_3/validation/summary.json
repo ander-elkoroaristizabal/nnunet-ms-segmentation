@@ -1,33 +1,33 @@
 {
     "foreground_mean": {
-        "Dice": 0.38429970730454854,
-        "FN": 1742.0,
-        "FP": 1521.65625,
-        "IoU": 0.3145584005470312,
-        "TN": 7211114.9375,
-        "TP": 6653.40625,
-        "n_pred": 8175.0625,
+        "Dice": 0.5629566865671048,
+        "FN": 2408.28125,
+        "FP": 1215.96875,
+        "IoU": 0.4226369999753831,
+        "TN": 7211420.625,
+        "TP": 5987.125,
+        "n_pred": 7203.09375,
         "n_ref": 8395.40625
     },
     "mean": {
         "1": {
-            "Dice": 0.7685994146090971,
-            "FN": 3287.6875,
-            "FP": 3043.3125,
-            "IoU": 0.6291168010940624,
-            "TN": 7201394.1875,
-            "TP": 13306.8125,
-            "n_pred": 16350.125,
+            "Dice": 0.7286037417658411,
+            "FN": 4702.75,
+            "FP": 2383.3125,
+            "IoU": 0.5788134025464533,
+            "TN": 7202054.1875,
+            "TP": 11891.75,
+            "n_pred": 14275.0625,
             "n_ref": 16594.5
         },
         "2": {
-            "Dice": 0.0,
-            "FN": 196.3125,
-            "FP": 0.0,
-            "IoU": 0.0,
-            "TN": 7220835.6875,
-            "TP": 0.0,
-            "n_pred": 0.0,
+            "Dice": 0.3973096313683686,
+            "FN": 113.8125,
+            "FP": 48.625,
+            "IoU": 0.26646059740431294,
+            "TN": 7220787.0625,
+            "TP": 82.5,
+            "n_pred": 131.125,
             "n_ref": 196.3125
         }
     },
@@ -35,13 +35,13 @@
         {
             "metrics": {
                 "1": {
-                    "Dice": 0.699538730714172,
-                    "FN": 1131,
-                    "FP": 758,
-                    "IoU": 0.5379158512720157,
-                    "TN": 7216944,
-                    "TP": 2199,
-                    "n_pred": 2957,
+                    "Dice": 0.5874859497939303,
+                    "FN": 1762,
+                    "FP": 440,
+                    "IoU": 0.4159151193633952,
+                    "TN": 7217262,
+                    "TP": 1568,
+                    "n_pred": 2008,
                     "n_ref": 3330
                 },
                 "2": {
@@ -55,19 +55,19 @@
                     "n_ref": 0
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/FIS_001_01.nii.gz",
-            "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_001_01.nii.gz"
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/FIS_001_01.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_001_01.nii.gz"
         },
         {
             "metrics": {
                 "1": {
-                    "Dice": 0.7422601361065849,
-                    "FN": 1438,
-                    "FP": 1251,
-                    "IoU": 0.5901539399481787,
-                    "TN": 7214471,
-                    "TP": 3872,
-                    "n_pred": 5123,
+                    "Dice": 0.7135797163730124,
+                    "FN": 1989,
+                    "FP": 677,
+                    "IoU": 0.5547018540170369,
+                    "TN": 7215045,
+                    "TP": 3321,
+                    "n_pred": 3998,
                     "n_ref": 5310
                 },
                 "2": {
@@ -81,45 +81,45 @@
                     "n_ref": 0
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/FIS_007_01.nii.gz",
-            "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_007_01.nii.gz"
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/FIS_007_01.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_007_01.nii.gz"
         },
         {
             "metrics": {
                 "1": {
-                    "Dice": 0.8224938184387143,
-                    "FN": 6576,
-                    "FP": 5987,
-                    "IoU": 0.6985048837265113,
-                    "TN": 7179363,
-                    "TP": 29106,
-                    "n_pred": 35093,
+                    "Dice": 0.7915348400672126,
+                    "FN": 9538,
+                    "FP": 4233,
+                    "IoU": 0.6549918576976074,
+                    "TN": 7181117,
+                    "TP": 26144,
+                    "n_pred": 30377,
                     "n_ref": 35682
                 },
                 "2": {
-                    "Dice": NaN,
+                    "Dice": 0.0,
                     "FN": 0,
-                    "FP": 0,
-                    "IoU": NaN,
-                    "TN": 7221032,
+                    "FP": 402,
+                    "IoU": 0.0,
+                    "TN": 7220630,
                     "TP": 0,
-                    "n_pred": 0,
+                    "n_pred": 402,
                     "n_ref": 0
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/FIS_013_01.nii.gz",
-            "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_013_01.nii.gz"
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/FIS_013_01.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_013_01.nii.gz"
         },
         {
             "metrics": {
                 "1": {
-                    "Dice": 0.859260771901164,
-                    "FN": 2938,
-                    "FP": 3954,
-                    "IoU": 0.7532490780852816,
-                    "TN": 7193101,
-                    "TP": 21039,
-                    "n_pred": 24993,
+                    "Dice": 0.8253224429018766,
+                    "FN": 5132,
+                    "FP": 2845,
+                    "IoU": 0.7025948847960629,
+                    "TN": 7194210,
+                    "TP": 18845,
+                    "n_pred": 21690,
                     "n_ref": 23977
                 },
                 "2": {
@@ -133,19 +133,19 @@
                     "n_ref": 0
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/FIS_017_01.nii.gz",
-            "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_017_01.nii.gz"
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/FIS_017_01.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_017_01.nii.gz"
         },
         {
             "metrics": {
                 "1": {
-                    "Dice": 0.683293474547318,
-                    "FN": 909,
-                    "FP": 945,
-                    "IoU": 0.5189413596263622,
-                    "TN": 7217178,
-                    "TP": 2000,
-                    "n_pred": 2945,
+                    "Dice": 0.6428814135236154,
+                    "FN": 1017,
+                    "FP": 1085,
+                    "IoU": 0.47371056584877314,
+                    "TN": 7217038,
+                    "TP": 1892,
+                    "n_pred": 2977,
                     "n_ref": 2909
                 },
                 "2": {
@@ -159,97 +159,97 @@
                     "n_ref": 0
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/FIS_021_01.nii.gz",
-            "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_021_01.nii.gz"
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/FIS_021_01.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_021_01.nii.gz"
         },
         {
             "metrics": {
                 "1": {
-                    "Dice": 0.7410165168562437,
-                    "FN": 3722,
-                    "FP": 8869,
-                    "IoU": 0.5885831917396419,
-                    "TN": 7190428,
-                    "TP": 18013,
-                    "n_pred": 26882,
+                    "Dice": 0.6736837939971905,
+                    "FN": 4710,
+                    "FP": 11783,
+                    "IoU": 0.5079360343695924,
+                    "TN": 7187514,
+                    "TP": 17025,
+                    "n_pred": 28808,
                     "n_ref": 21735
                 },
                 "2": {
-                    "Dice": 0.0,
-                    "FN": 465,
-                    "FP": 0,
-                    "IoU": 0.0,
-                    "TN": 7220567,
-                    "TP": 0,
-                    "n_pred": 0,
+                    "Dice": 0.5344827586206896,
+                    "FN": 217,
+                    "FP": 215,
+                    "IoU": 0.36470588235294116,
+                    "TN": 7220352,
+                    "TP": 248,
+                    "n_pred": 463,
                     "n_ref": 465
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/FIS_031_01.nii.gz",
-            "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_031_01.nii.gz"
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/FIS_031_01.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_031_01.nii.gz"
         },
         {
             "metrics": {
                 "1": {
-                    "Dice": 0.6982024597918638,
-                    "FN": 1790,
-                    "FP": 1081,
-                    "IoU": 0.5363372093023255,
-                    "TN": 7214840,
-                    "TP": 3321,
-                    "n_pred": 4402,
+                    "Dice": 0.6484579492432002,
+                    "FN": 2262,
+                    "FP": 827,
+                    "IoU": 0.4797911754799596,
+                    "TN": 7215094,
+                    "TP": 2849,
+                    "n_pred": 3676,
                     "n_ref": 5111
                 },
                 "2": {
-                    "Dice": 0.0,
-                    "FN": 863,
-                    "FP": 0,
-                    "IoU": 0.0,
-                    "TN": 7220169,
-                    "TP": 0,
-                    "n_pred": 0,
+                    "Dice": 0.4782251437962202,
+                    "FN": 572,
+                    "FP": 63,
+                    "IoU": 0.3142548596112311,
+                    "TN": 7220106,
+                    "TP": 291,
+                    "n_pred": 354,
                     "n_ref": 863
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/FIS_096_01.nii.gz",
-            "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_096_01.nii.gz"
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/FIS_096_01.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_096_01.nii.gz"
         },
         {
             "metrics": {
                 "1": {
-                    "Dice": 0.7162011173184357,
-                    "FN": 579,
-                    "FP": 437,
-                    "IoU": 0.5578764142732812,
-                    "TN": 7218734,
-                    "TP": 1282,
-                    "n_pred": 1719,
+                    "Dice": 0.6686121919584954,
+                    "FN": 830,
+                    "FP": 192,
+                    "IoU": 0.5021919142717973,
+                    "TN": 7218979,
+                    "TP": 1031,
+                    "n_pred": 1223,
                     "n_ref": 1861
                 },
                 "2": {
-                    "Dice": 0.0,
-                    "FN": 1619,
-                    "FP": 0,
-                    "IoU": 0.0,
-                    "TN": 7219413,
-                    "TP": 0,
-                    "n_pred": 0,
+                    "Dice": 0.6090534979423868,
+                    "FN": 879,
+                    "FP": 71,
+                    "IoU": 0.4378698224852071,
+                    "TN": 7219342,
+                    "TP": 740,
+                    "n_pred": 811,
                     "n_ref": 1619
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/FIS_102_01.nii.gz",
-            "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_102_01.nii.gz"
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/FIS_102_01.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_102_01.nii.gz"
         },
         {
             "metrics": {
                 "1": {
-                    "Dice": 0.8368323655159211,
-                    "FN": 4621,
-                    "FP": 3050,
-                    "IoU": 0.7194426157559798,
-                    "TN": 7193690,
-                    "TP": 19671,
-                    "n_pred": 22721,
+                    "Dice": 0.8183778328286999,
+                    "FN": 6453,
+                    "FP": 1465,
+                    "IoU": 0.6925884225647397,
+                    "TN": 7195275,
+                    "TP": 17839,
+                    "n_pred": 19304,
                     "n_ref": 24292
                 },
                 "2": {
@@ -263,45 +263,45 @@
                     "n_ref": 0
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/REHEM_108_01.nii.gz",
-            "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_108_01.nii.gz"
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/REHEM_108_01.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_108_01.nii.gz"
         },
         {
             "metrics": {
                 "1": {
-                    "Dice": 0.8268807517305082,
-                    "FN": 9227,
-                    "FP": 5954,
-                    "IoU": 0.7048565207247842,
-                    "TN": 7169596,
-                    "TP": 36255,
-                    "n_pred": 42209,
+                    "Dice": 0.8032086599839809,
+                    "FN": 12389,
+                    "FP": 3827,
+                    "IoU": 0.6711350869009715,
+                    "TN": 7171723,
+                    "TP": 33093,
+                    "n_pred": 36920,
                     "n_ref": 45482
                 },
                 "2": {
-                    "Dice": 0.0,
-                    "FN": 158,
-                    "FP": 0,
-                    "IoU": 0.0,
-                    "TN": 7220874,
-                    "TP": 0,
-                    "n_pred": 0,
+                    "Dice": 0.27230046948356806,
+                    "FN": 129,
+                    "FP": 26,
+                    "IoU": 0.15760869565217392,
+                    "TN": 7220848,
+                    "TP": 29,
+                    "n_pred": 55,
                     "n_ref": 158
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/REHEM_22_01.nii.gz",
-            "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_22_01.nii.gz"
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/REHEM_22_01.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_22_01.nii.gz"
         },
         {
             "metrics": {
                 "1": {
-                    "Dice": 0.8735830643345094,
-                    "FN": 4332,
-                    "FP": 2404,
-                    "IoU": 0.7755414861712763,
-                    "TN": 7191022,
-                    "TP": 23274,
-                    "n_pred": 25678,
+                    "Dice": 0.8130687198912999,
+                    "FN": 7859,
+                    "FP": 1221,
+                    "IoU": 0.6850175182988171,
+                    "TN": 7192205,
+                    "TP": 19747,
+                    "n_pred": 20968,
                     "n_ref": 27606
                 },
                 "2": {
@@ -315,19 +315,19 @@
                     "n_ref": 0
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/REHEM_23_01.nii.gz",
-            "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_23_01.nii.gz"
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/REHEM_23_01.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_23_01.nii.gz"
         },
         {
             "metrics": {
                 "1": {
-                    "Dice": 0.8196596393192787,
-                    "FN": 2164,
-                    "FP": 3516,
-                    "IoU": 0.6944265117279965,
-                    "TN": 7202444,
-                    "TP": 12908,
-                    "n_pred": 16424,
+                    "Dice": 0.8061736770691995,
+                    "FN": 3189,
+                    "FP": 2525,
+                    "IoU": 0.6752855600386429,
+                    "TN": 7203435,
+                    "TP": 11883,
+                    "n_pred": 14408,
                     "n_ref": 15072
                 },
                 "2": {
@@ -341,19 +341,19 @@
                     "n_ref": 0
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/REHEM_35_01.nii.gz",
-            "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_35_01.nii.gz"
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/REHEM_35_01.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_35_01.nii.gz"
         },
         {
             "metrics": {
                 "1": {
-                    "Dice": 0.7783934274094495,
-                    "FN": 5140,
-                    "FP": 2979,
-                    "IoU": 0.6371883099472696,
-                    "TN": 7198654,
-                    "TP": 14259,
-                    "n_pred": 17238,
+                    "Dice": 0.7320763569187462,
+                    "FN": 6916,
+                    "FP": 2221,
+                    "IoU": 0.5773820536540241,
+                    "TN": 7199412,
+                    "TP": 12483,
+                    "n_pred": 14704,
                     "n_ref": 19399
                 },
                 "2": {
@@ -367,45 +367,45 @@
                     "n_ref": 0
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/REHEM_36_01.nii.gz",
-            "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_36_01.nii.gz"
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/REHEM_36_01.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_36_01.nii.gz"
         },
         {
             "metrics": {
                 "1": {
-                    "Dice": 0.6272704652898731,
-                    "FN": 1432,
-                    "FP": 1564,
-                    "IoU": 0.4569512416168207,
-                    "TN": 7215515,
-                    "TP": 2521,
-                    "n_pred": 4085,
+                    "Dice": 0.6142007694998252,
+                    "FN": 1319,
+                    "FP": 1990,
+                    "IoU": 0.44321049974760224,
+                    "TN": 7215089,
+                    "TP": 2634,
+                    "n_pred": 4624,
                     "n_ref": 3953
                 },
                 "2": {
-                    "Dice": 0.0,
-                    "FN": 36,
-                    "FP": 0,
-                    "IoU": 0.0,
-                    "TN": 7220996,
-                    "TP": 0,
-                    "n_pred": 0,
+                    "Dice": 0.4897959183673469,
+                    "FN": 24,
+                    "FP": 1,
+                    "IoU": 0.32432432432432434,
+                    "TN": 7220995,
+                    "TP": 12,
+                    "n_pred": 13,
                     "n_ref": 36
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/REHEM_39_01.nii.gz",
-            "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_39_01.nii.gz"
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/REHEM_39_01.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_39_01.nii.gz"
         },
         {
             "metrics": {
                 "1": {
-                    "Dice": 0.791163231461739,
-                    "FN": 4759,
-                    "FP": 2293,
-                    "IoU": 0.6544830965213131,
-                    "TN": 7200622,
-                    "TP": 13358,
-                    "n_pred": 15651,
+                    "Dice": 0.7540836012861737,
+                    "FN": 6391,
+                    "FP": 1257,
+                    "IoU": 0.6052441416331166,
+                    "TN": 7201658,
+                    "TP": 11726,
+                    "n_pred": 12983,
                     "n_ref": 18117
                 },
                 "2": {
@@ -419,19 +419,19 @@
                     "n_ref": 0
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/REHEM_82_01.nii.gz",
-            "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_82_01.nii.gz"
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/REHEM_82_01.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_82_01.nii.gz"
         },
         {
             "metrics": {
                 "1": {
-                    "Dice": 0.7815406630097782,
-                    "FN": 1845,
-                    "FP": 3651,
-                    "IoU": 0.641417107065962,
-                    "TN": 7205705,
-                    "TP": 9831,
-                    "n_pred": 13482,
+                    "Dice": 0.7649119529169975,
+                    "FN": 3488,
+                    "FP": 1545,
+                    "IoU": 0.619317752061115,
+                    "TN": 7207811,
+                    "TP": 8188,
+                    "n_pred": 9733,
                     "n_ref": 11676
                 },
                 "2": {
@@ -445,8 +445,8 @@
                     "n_ref": 0
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/REHEM_99_01.nii.gz",
-            "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_99_01.nii.gz"
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_3/validation/REHEM_99_01.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_99_01.nii.gz"
         }
     ]
 }
