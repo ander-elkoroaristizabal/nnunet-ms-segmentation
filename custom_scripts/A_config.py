@@ -35,4 +35,4 @@ TEST_IMAGES_DIR = RAW_DATASET_DIR / "imagesTs"
 TEST_LABELS_DIR = RAW_DATASET_DIR / "labelsTs"
 
 # Test
-NNUNET_TEST_RESULTS_PATH = os.path.join(ROOT, 'nnUNet_test_results')
+NNUNET_TEST_RESULTS_PATH = ROOT / 'nnUNet_test_results'
