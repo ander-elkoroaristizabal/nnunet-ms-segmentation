@@ -1,25 +1,25 @@
 {
     "all_results": {
-        "nnUNetTrainerEarlyStopping__nnUNetPlans__3d_fullres": 0.5344056618603195
+        "nnUNetTrainerExtremeOversamplingEarlyStoppingLowLR__nnUNetPlans__3d_fullres": 0.5895948103469216
     },
     "best_model_or_ensemble": {
-        "postprocessing_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerEarlyStopping__nnUNetPlans__3d_fullres/crossval_results_folds_0_1_2_3_4/postprocessing.pkl",
-        "result_on_crossval_post_pp": 0.5344056618603195,
-        "result_on_crossval_pre_pp": 0.5344056618603195,
+        "postprocessing_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStoppingLowLR__nnUNetPlans__3d_fullres/crossval_results_folds_0_1_2_3_4/postprocessing.pkl",
+        "result_on_crossval_post_pp": 0.5895948103469216,
+        "result_on_crossval_pre_pp": 0.5895948103469216,
         "selected_model_or_models": [
             {
                 "configuration": "3d_fullres",
                 "plans_identifier": "nnUNetPlans",
-                "trainer": "nnUNetTrainerEarlyStopping"
+                "trainer": "nnUNetTrainerExtremeOversamplingEarlyStoppingLowLR"
             }
         ],
-        "some_plans_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerEarlyStopping__nnUNetPlans__3d_fullres/crossval_results_folds_0_1_2_3_4/plans.json"
+        "some_plans_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStoppingLowLR__nnUNetPlans__3d_fullres/crossval_results_folds_0_1_2_3_4/plans.json"
     },
     "considered_models": [
         {
             "configuration": "3d_fullres",
             "plans": "nnUNetPlans",
-            "trainer": "nnUNetTrainerEarlyStopping"
+            "trainer": "nnUNetTrainerExtremeOversamplingEarlyStoppingLowLR"
         }
     ],
     "dataset_name_or_id": "Dataset100_MSSEG",
