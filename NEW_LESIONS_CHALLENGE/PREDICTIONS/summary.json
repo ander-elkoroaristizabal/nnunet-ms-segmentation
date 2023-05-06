@@ -1,0 +1,986 @@
+{
+    "foreground_mean": {
+        "Dice": 0.38239706788386907,
+        "FN": 2004.1,
+        "FP": 85.36666666666666,
+        "IoU": 0.2714996835345834,
+        "TN": 7218270.983333333,
+        "TP": 671.55,
+        "n_pred": 756.9166666666666,
+        "n_ref": 2675.65
+    },
+    "mean": {
+        "2": {
+            "Dice": 0.38239706788386907,
+            "FN": 2004.1,
+            "FP": 85.36666666666666,
+            "IoU": 0.2714996835345834,
+            "TN": 7218270.983333333,
+            "TP": 671.55,
+            "n_pred": 756.9166666666666,
+            "n_ref": 2675.65
+        }
+    },
+    "metric_per_case": [
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 20,
+                    "FP": 31,
+                    "IoU": 0.0,
+                    "TN": 7220981,
+                    "TP": 0,
+                    "n_pred": 31,
+                    "n_ref": 20
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/013.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/013.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 7221032,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/015.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/015.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.6054054054054054,
+                    "FN": 192,
+                    "FP": 27,
+                    "IoU": 0.43410852713178294,
+                    "TN": 7220645,
+                    "TP": 168,
+                    "n_pred": 195,
+                    "n_ref": 360
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/016.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/016.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 220,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 7220812,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 220
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/018.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/018.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 7221032,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/019.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/019.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.5,
+                    "FN": 28,
+                    "FP": 14,
+                    "IoU": 0.3333333333333333,
+                    "TN": 7220969,
+                    "TP": 21,
+                    "n_pred": 35,
+                    "n_ref": 49
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/020.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/020.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.7131438721136767,
+                    "FN": 258,
+                    "FP": 388,
+                    "IoU": 0.5541752933057281,
+                    "TN": 7219583,
+                    "TP": 803,
+                    "n_pred": 1191,
+                    "n_ref": 1061
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/021.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/021.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.7077922077922078,
+                    "FN": 123,
+                    "FP": 57,
+                    "IoU": 0.5477386934673367,
+                    "TN": 7220634,
+                    "TP": 218,
+                    "n_pred": 275,
+                    "n_ref": 341
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/024.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/024.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.4697986577181208,
+                    "FN": 391,
+                    "FP": 399,
+                    "IoU": 0.30701754385964913,
+                    "TN": 7219892,
+                    "TP": 350,
+                    "n_pred": 749,
+                    "n_ref": 741
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/026.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/026.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.6354430379746835,
+                    "FN": 250,
+                    "FP": 38,
+                    "IoU": 0.46567717996289426,
+                    "TN": 7220493,
+                    "TP": 251,
+                    "n_pred": 289,
+                    "n_ref": 501
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/027.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/027.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.009708737864077669,
+                    "FN": 204,
+                    "FP": 0,
+                    "IoU": 0.004878048780487805,
+                    "TN": 7220827,
+                    "TP": 1,
+                    "n_pred": 1,
+                    "n_ref": 205
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/029.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/029.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.8056537102473498,
+                    "FN": 21,
+                    "FP": 34,
+                    "IoU": 0.6745562130177515,
+                    "TN": 7220863,
+                    "TP": 114,
+                    "n_pred": 148,
+                    "n_ref": 135
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/030.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/030.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 24,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 7221008,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 24
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/032.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/032.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.663594470046083,
+                    "FN": 42,
+                    "FP": 31,
+                    "IoU": 0.496551724137931,
+                    "TN": 7220887,
+                    "TP": 72,
+                    "n_pred": 103,
+                    "n_ref": 114
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/035.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/035.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 12,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 7221020,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 12
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/037.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/037.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.5884191176470588,
+                    "FN": 4295,
+                    "FP": 183,
+                    "IoU": 0.4168511524938143,
+                    "TN": 7213353,
+                    "TP": 3201,
+                    "n_pred": 3384,
+                    "n_ref": 7496
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/039.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/039.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.32628398791540786,
+                    "FN": 217,
+                    "FP": 6,
+                    "IoU": 0.19494584837545126,
+                    "TN": 7220755,
+                    "TP": 54,
+                    "n_pred": 60,
+                    "n_ref": 271
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/043.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/043.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 11,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 7221021,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 11
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/047.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/047.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.769811320754717,
+                    "FN": 33,
+                    "FP": 28,
+                    "IoU": 0.6257668711656442,
+                    "TN": 7220869,
+                    "TP": 102,
+                    "n_pred": 130,
+                    "n_ref": 135
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/048.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/048.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 7221032,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/049.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/049.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 7221032,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/051.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/051.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 7221032,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/052.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/052.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.4336569579288026,
+                    "FN": 640,
+                    "FP": 60,
+                    "IoU": 0.2768595041322314,
+                    "TN": 7220064,
+                    "TP": 268,
+                    "n_pred": 328,
+                    "n_ref": 908
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/057.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/057.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.46749654218533887,
+                    "FN": 679,
+                    "FP": 91,
+                    "IoU": 0.30505415162454874,
+                    "TN": 7219924,
+                    "TP": 338,
+                    "n_pred": 429,
+                    "n_ref": 1017
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/061.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/061.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 7221032,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/068.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/068.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.6958777745748054,
+                    "FN": 847,
+                    "FP": 208,
+                    "IoU": 0.5335985853227233,
+                    "TN": 7218770,
+                    "TP": 1207,
+                    "n_pred": 1415,
+                    "n_ref": 2054
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/069.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/069.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 7221032,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/070.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/070.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.60625,
+                    "FN": 260,
+                    "FP": 118,
+                    "IoU": 0.4349775784753363,
+                    "TN": 7220363,
+                    "TP": 291,
+                    "n_pred": 409,
+                    "n_ref": 551
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/074.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/074.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.7272727272727273,
+                    "FN": 22,
+                    "FP": 17,
+                    "IoU": 0.5714285714285714,
+                    "TN": 7220941,
+                    "TP": 52,
+                    "n_pred": 69,
+                    "n_ref": 74
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/077.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/077.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.5871559633027523,
+                    "FN": 82,
+                    "FP": 8,
+                    "IoU": 0.4155844155844156,
+                    "TN": 7220878,
+                    "TP": 64,
+                    "n_pred": 72,
+                    "n_ref": 146
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/083.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/083.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 7221032,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/084.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/084.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 43,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 7220989,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 43
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/088.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/088.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 7221032,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/089.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/089.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 7221032,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/090.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/090.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.6791044776119403,
+                    "FN": 69,
+                    "FP": 17,
+                    "IoU": 0.5141242937853108,
+                    "TN": 7220855,
+                    "TP": 91,
+                    "n_pred": 108,
+                    "n_ref": 160
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/091.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/091.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.40336134453781514,
+                    "FN": 316,
+                    "FP": 39,
+                    "IoU": 0.25263157894736843,
+                    "TN": 7220557,
+                    "TP": 120,
+                    "n_pred": 159,
+                    "n_ref": 436
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/094.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/094.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.7190831556503199,
+                    "FN": 1983,
+                    "FP": 125,
+                    "IoU": 0.5613816063254266,
+                    "TN": 7216226,
+                    "TP": 2698,
+                    "n_pred": 2823,
+                    "n_ref": 4681
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/095.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/095.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 7221032,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/096.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/096.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.7894736842105263,
+                    "FN": 13,
+                    "FP": 3,
+                    "IoU": 0.6521739130434783,
+                    "TN": 7220986,
+                    "TP": 30,
+                    "n_pred": 33,
+                    "n_ref": 43
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/099.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/099.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.41379310344827586,
+                    "FN": 322,
+                    "FP": 1,
+                    "IoU": 0.2608695652173913,
+                    "TN": 7220595,
+                    "TP": 114,
+                    "n_pred": 115,
+                    "n_ref": 436
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/100.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/100.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.5458097284625903,
+                    "FN": 2139,
+                    "FP": 186,
+                    "IoU": 0.3753358409457281,
+                    "TN": 7217310,
+                    "TP": 1397,
+                    "n_pred": 1583,
+                    "n_ref": 3536
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/patient1.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/patient1.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.33411986786219916,
+                    "FN": 1336,
+                    "FP": 75,
+                    "IoU": 0.20056657223796034,
+                    "TN": 7219267,
+                    "TP": 354,
+                    "n_pred": 429,
+                    "n_ref": 1690
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/patient10.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/patient10.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.01767760468456524,
+                    "FN": 8796,
+                    "FP": 95,
+                    "IoU": 0.008917623453349682,
+                    "TN": 7212061,
+                    "TP": 80,
+                    "n_pred": 175,
+                    "n_ref": 8876
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/patient11.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/patient11.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.08645928636779505,
+                    "FN": 3883,
+                    "FP": 111,
+                    "IoU": 0.04518288309825484,
+                    "TN": 7216849,
+                    "TP": 189,
+                    "n_pred": 300,
+                    "n_ref": 4072
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/patient12.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/patient12.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 442,
+                    "FP": 25,
+                    "IoU": 0.0,
+                    "TN": 7220565,
+                    "TP": 0,
+                    "n_pred": 25,
+                    "n_ref": 442
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/patient13.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/patient13.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.5432183122651179,
+                    "FN": 11737,
+                    "FP": 296,
+                    "IoU": 0.3728893058161351,
+                    "TN": 7201844,
+                    "TP": 7155,
+                    "n_pred": 7451,
+                    "n_ref": 18892
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/patient14.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/patient14.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.33013100436681225,
+                    "FN": 2837,
+                    "FP": 231,
+                    "IoU": 0.19769874476987448,
+                    "TN": 7217208,
+                    "TP": 756,
+                    "n_pred": 987,
+                    "n_ref": 3593
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/patient15.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/patient15.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.38186813186813184,
+                    "FN": 4747,
+                    "FP": 203,
+                    "IoU": 0.23599320882852293,
+                    "TN": 7214553,
+                    "TP": 1529,
+                    "n_pred": 1732,
+                    "n_ref": 6276
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/patient16.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/patient16.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.35873647006847803,
+                    "FN": 8458,
+                    "FP": 251,
+                    "IoU": 0.21857335127860028,
+                    "TN": 7209887,
+                    "TP": 2436,
+                    "n_pred": 2687,
+                    "n_ref": 10894
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/patient17.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/patient17.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.1739822832686374,
+                    "FN": 8102,
+                    "FP": 197,
+                    "IoU": 0.09527962498637305,
+                    "TN": 7211859,
+                    "TP": 874,
+                    "n_pred": 1071,
+                    "n_ref": 8976
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/patient18.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/patient18.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.4378653828117673,
+                    "FN": 17347,
+                    "FP": 634,
+                    "IoU": 0.2802993916106308,
+                    "TN": 7196048,
+                    "TP": 7003,
+                    "n_pred": 7637,
+                    "n_ref": 24350
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/patient19.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/patient19.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.18337617823479005,
+                    "FN": 900,
+                    "FP": 53,
+                    "IoU": 0.1009433962264151,
+                    "TN": 7219972,
+                    "TP": 107,
+                    "n_pred": 160,
+                    "n_ref": 1007
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/patient2.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/patient2.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.22633744855967078,
+                    "FN": 358,
+                    "FP": 18,
+                    "IoU": 0.12761020881670534,
+                    "TN": 7220601,
+                    "TP": 55,
+                    "n_pred": 73,
+                    "n_ref": 413
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/patient20.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/patient20.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.08459214501510574,
+                    "FN": 4148,
+                    "FP": 94,
+                    "IoU": 0.04416403785488959,
+                    "TN": 7216594,
+                    "TP": 196,
+                    "n_pred": 290,
+                    "n_ref": 4344
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/patient3.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/patient3.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.0,
+                    "FN": 1305,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 7219727,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1305
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/patient4.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/patient4.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.6393654904499838,
+                    "FN": 1956,
+                    "FP": 272,
+                    "IoU": 0.469902450630502,
+                    "TN": 7216829,
+                    "TP": 1975,
+                    "n_pred": 2247,
+                    "n_ref": 3931
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/patient5.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/patient5.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.299917149958575,
+                    "FN": 3304,
+                    "FP": 76,
+                    "IoU": 0.17641325536062377,
+                    "TN": 7216928,
+                    "TP": 724,
+                    "n_pred": 800,
+                    "n_ref": 4028
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/patient6.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/patient6.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.1540383014154871,
+                    "FN": 6053,
+                    "FP": 43,
+                    "IoU": 0.08344609833107804,
+                    "TN": 7214381,
+                    "TP": 555,
+                    "n_pred": 598,
+                    "n_ref": 6608
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/patient7.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/patient7.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.030168921024745995,
+                    "FN": 15540,
+                    "FP": 19,
+                    "IoU": 0.015315486361622683,
+                    "TN": 7205231,
+                    "TP": 242,
+                    "n_pred": 261,
+                    "n_ref": 15782
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/patient8.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/patient8.nii.gz"
+        },
+        {
+            "metrics": {
+                "2": {
+                    "Dice": 0.5922123634230403,
+                    "FN": 5241,
+                    "FP": 320,
+                    "IoU": 0.4206688196687155,
+                    "TN": 7211433,
+                    "TP": 4038,
+                    "n_pred": 4358,
+                    "n_ref": 9279
+                }
+            },
+            "prediction_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/PREDICTIONS/patient9.nii.gz",
+            "reference_file": "/home/ander/PycharmProjects/nnunet-ms-segmentation/NEW_LESIONS_CHALLENGE/LABELS/patient9.nii.gz"
+        }
+    ]
+}
