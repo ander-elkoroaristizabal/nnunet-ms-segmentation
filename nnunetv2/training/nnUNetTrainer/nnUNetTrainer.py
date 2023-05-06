@@ -1136,15 +1136,16 @@ class nnUNetTrainer(object):
                 output_filename_truncated = join(validation_output_folder, k)
 
                 try:
-                    prediction = predict_sliding_window_return_logits(self.network, data, num_seg_heads,
-                                                                      tile_size=self.configuration_manager.patch_size,
-                                                                      mirror_axes=self.inference_allowed_mirroring_axes,
-                                                                      tile_step_size=0.5,
-                                                                      use_gaussian=True,
-                                                                      precomputed_gaussian=inference_gaussian,
-                                                                      perform_everything_on_gpu=True,
-                                                                      verbose=False,
-                                                                      device=self.device).cpu().numpy()
+                    prediction = predict_sliding_window_return_logits(
+                        self.network, data, num_seg_heads,
+                        tile_size=self.configuration_manager.patch_size,
+                        mirror_axes=self.inference_allowed_mirroring_axes,
+                        tile_step_size=0.5,
+                        use_gaussian=True,
+                        precomputed_gaussian=inference_gaussian,
+                        perform_everything_on_gpu=True if (self.device.type == 'cuda') else False,
+                        verbose=False,
+                        device=self.device).cpu().numpy()
                 except RuntimeError:
                     prediction = predict_sliding_window_return_logits(self.network, data, num_seg_heads,
                                                                       tile_size=self.configuration_manager.patch_size,
