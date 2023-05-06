@@ -227,3 +227,35 @@ class nnUNetTrainerExtremeOversamplingEarlyStoppingLowLR(nnUNetTrainerExtremeOve
         super().__init__(plans, configuration, fold, dataset_json, unpack_dataset, device)
         self.initial_lr = 1e-3
         self.print_to_log_file("Initial lr:", self.initial_lr)
+
+
+class nnUNetTrainerExtremeOversamplingEarlyStoppingVeryLowLR(nnUNetTrainerExtremeOversamplingEarlyStopping):
+    def __init__(
+            self,
+            plans: dict,
+            configuration: str,
+            fold: int,
+            dataset_json: dict,
+            unpack_dataset: bool = True,
+            device: torch.device = torch.device('cuda')
+    ):
+        super().__init__(plans, configuration, fold, dataset_json, unpack_dataset, device)
+        self.initial_lr = 5e-4
+        self.print_to_log_file("Initial lr:", self.initial_lr)
+
+
+class nnUNetTrainerExtremeOversamplingEarlyStoppingLowLRHigherDecay(nnUNetTrainerExtremeOversamplingEarlyStopping):
+    def __init__(
+            self,
+            plans: dict,
+            configuration: str,
+            fold: int,
+            dataset_json: dict,
+            unpack_dataset: bool = True,
+            device: torch.device = torch.device('cuda')
+    ):
+        super().__init__(plans, configuration, fold, dataset_json, unpack_dataset, device)
+        self.initial_lr = 5e-4
+        self.print_to_log_file("Initial lr:", self.initial_lr)
+        self.weight_decay = 5e-4
+        self.print_to_log_file("Weight decay:", self.weight_decay)
