@@ -1,4 +1,5 @@
 import os
+from enum import Enum
 from pathlib import Path
 import pandas as pd
 
@@ -36,3 +37,14 @@ TEST_LABELS_DIR = RAW_DATASET_DIR / "labelsTs"
 
 # Test
 NNUNET_TEST_RESULTS_PATH = ROOT / 'nnUNet_test_results'
+
+# Test on MSSEG-2:
+MSSEG2_IMAGES_DIR = ROOT / "NEW_LESIONS_CHALLENGE" / "IMAGES"
+MSSEG2_LABELS_DIR = ROOT / "NEW_LESIONS_CHALLENGE" / "LABELS"
+MSSEG2_PREDICTIONS_DIR = ROOT / "NEW_LESIONS_CHALLENGE" / "PREDICTIONS"
+
+
+# Enums
+class TestDataset(str, Enum):
+    test_split = "test_split"
+    msseg2 = "MSSEG2"

@@ -1,5 +1,5 @@
 import os
-from typing import Dict
+from typing import Dict, List
 
 import pandas as pd
 import torch
@@ -16,35 +16,50 @@ from custom_scripts.A_config import (
     NNUNET_TEST_RESULTS_PATH,
     DATASET,
     PLAN,
-    CONFIGURATION
+    CONFIGURATION,
+    MSSEG2_PREDICTIONS_DIR,
+    MSSEG2_LABELS_DIR,
+    MSSEG2_IMAGES_DIR,
+    TestDataset
 )
 from nnunetv2.inference.predict_from_raw_data import predict_from_raw_data
 from nnunetv2.evaluation.evaluate_predictions import compute_metrics_on_folder_simple, load_summary_json
 
 
-def get_paths(case_id: str, basal_im: bool = False, follow_up_im: bool = False, labels: bool = False,
+def get_paths(case_id: str, test_dataset: TestDataset, basal_im: bool = False, follow_up_im: bool = False,
+              labels: bool = False,
               preds: bool = False):
     ans = list()
+    if test_dataset == TestDataset.msseg2:
+        images_dir = MSSEG2_IMAGES_DIR
+        labels_dir = MSSEG2_LABELS_DIR
+        predictions_dir = MSSEG2_PREDICTIONS_DIR
+    else:
+        images_dir = TEST_IMAGES_DIR
+        labels_dir = TEST_LABELS_DIR
+        predictions_dir = TEST_PREDICTIONS_FOLDER
     if basal_im:
-        ans.append(os.path.join(TEST_IMAGES_DIR, f"{case_id}_0000" + TERMINATION))
+        ans.append(os.path.join(images_dir, f"{case_id}_0000" + TERMINATION))
     if follow_up_im:
-        ans.append(os.path.join(TEST_IMAGES_DIR, f"{case_id}_0001" + TERMINATION))
+        ans.append(os.path.join(images_dir, f"{case_id}_0001" + TERMINATION))
     if labels:
-        ans.append(os.path.join(TEST_LABELS_DIR, case_id + TERMINATION))
+        ans.append(os.path.join(labels_dir, case_id + TERMINATION))
     if preds:
-        ans.append(os.path.join(TEST_PREDICTIONS_FOLDER, case_id + TERMINATION))
+        ans.append(os.path.join(predictions_dir, case_id + TERMINATION))
     return tuple(ans)
 
 
-def read_images(case_id: str):
-    b_image_path, fu_image_path = get_paths(case_id=case_id, basal_im=True, follow_up_im=True)
+def read_images(case_id: str, test_dataset: TestDataset):
+    b_image_path, fu_image_path = get_paths(case_id=case_id, test_dataset=test_dataset,
+                                            basal_im=True, follow_up_im=True)
     b_image = nib.load(b_image_path).get_fdata()
     fu_image = nib.load(fu_image_path).get_fdata()
     return b_image, fu_image
 
 
-def read_labels_and_preds(case_id: str):
-    labels_path, predictions_path = get_paths(case_id=case_id, labels=True, preds=True)
+def read_labels_and_preds(case_id: str, test_dataset: TestDataset):
+    labels_path, predictions_path = get_paths(case_id=case_id, test_dataset=test_dataset,
+                                              labels=True, preds=True)
     labels = nib.load(labels_path).get_fdata()
     predictions = nib.load(predictions_path).get_fdata()
     return labels, predictions
@@ -54,10 +69,26 @@ def format_results_into_df(all_results: Dict):
     results = []
     for case_metrics in all_results['metric_per_case']:
         case_id = case_metrics['prediction_file'].split("/")[-1][:-7]
-        basal_metrics = {f"b_{key}": value for key, value in case_metrics['metrics'][1].items()}
-        new_lesions_metrics = {f"n_{key}": value for key, value in case_metrics['metrics'][2].items()}
+        if 1 in case_metrics['metrics'].keys():
+            basal_metrics = {f"b_{key}": value for key, value in case_metrics['metrics'][1].items()}
+        else:
+            basal_metrics = dict()
+        if 2 in case_metrics['metrics'].keys():
+            new_lesions_metrics = {f"new_{key}": value for key, value in case_metrics['metrics'][2].items()}
+        else:
+            new_lesions_metrics = {}
         results.append({'case_id': case_id} | basal_metrics | new_lesions_metrics)
     return pd.DataFrame.from_records(data=results)
+
+
+def get_all_preds_and_labels(ids: List[str], test_dataset: TestDataset):
+    labels = dict()
+    preds = dict()
+    for case in ids:
+        sample_labels, sample_predictions = read_labels_and_preds(case_id=case, test_dataset=test_dataset)
+        labels[case] = sample_labels
+        preds[case] = sample_predictions
+    return labels, preds
 
 
 if __name__ == '__main__':
@@ -88,31 +119,40 @@ if __name__ == '__main__':
     )
 
     compute_metrics_on_folder_simple(
-        folder_ref=TEST_LABELS_DIR,
-        folder_pred=TEST_PREDICTIONS_FOLDER,
-        labels=[1, 2]
+        folder_ref=MSSEG2_LABELS_DIR,
+        folder_pred=MSSEG2_PREDICTIONS_DIR,
+        labels=[2]
     )
 
-    # TODO Ander 2/5/23: Temporal!
-    TEST_PREDICTIONS_FOLDER = "/home/ander/PycharmProjects/nnunet-ms-segmentation/" \
-                              "nnUNet_test_results/Dataset100_MSSEG/" \
-                              "nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres"
-    results_dict = load_summary_json(filename=os.path.join(TEST_PREDICTIONS_FOLDER, 'summary.json'))
-    results_df = format_results_into_df(results_dict)
-    print(results_df.loc[:, (results_df.columns == "case_id") | (results_df.columns.str.startswith("n_"))])
+    # Loading results:
 
-    # Confusion matrices (require prediction files!):
-    test_images = os.listdir(TEST_IMAGES_DIR)
-    test_ids = sorted({file_name.split(".")[0][:-5] for file_name in test_images})
-    all_labels = dict()
-    all_preds = dict()
-    for case in test_ids:
-        sample_labels, sample_predictions = read_labels_and_preds(case_id=case)
-        all_labels[case] = sample_labels
-        all_preds[case] = sample_predictions
+    # TEST:
+    test_results_dict = load_summary_json(TEST_PREDICTIONS_FOLDER + "/" + 'summary.json')
+    test_results_df = format_results_into_df(test_results_dict)
+    # Results on no-lesions subset:
+    new_cols_mask = (test_results_df.columns == "case_id") | test_results_df.columns.str.startswith("new_")
+    print(test_results_df.loc[test_results_df.new_n_ref == 0, new_cols_mask])
+    # Results on with-lesions subset:
+    print(test_results_df.loc[test_results_df.new_n_ref > 0, new_cols_mask])
+
+    # MSSEG2:
+    MSSEG2_results_dict = load_summary_json(MSSEG2_PREDICTIONS_DIR / 'summary.json')
+    MSSEG2_results_df = format_results_into_df(MSSEG2_results_dict)
+    # Results on no-lesions subset:
+    print(MSSEG2_results_df.loc[MSSEG2_results_df.new_n_ref == 0, :])
+    # Results on with-lesions subset:
+    print(MSSEG2_results_df.loc[MSSEG2_results_df.new_n_ref > 0, :])
+
+    # Getting labels and predictions:
+    test_images = os.listdir(MSSEG2_LABELS_DIR)
+    # test_ids = sorted({file_name.split(".")[0][:-5] for file_name in test_images})
+    test_ids = sorted({file_name[:-7] for file_name in test_images})
+    all_labels, all_preds = get_all_preds_and_labels(ids=test_ids, test_dataset=TestDataset.msseg2)
+
+    # Confusion matrix:
     all_flattened_labels = np.concatenate([labels.flatten() for labels in all_labels.values()])
     all_flattened_preds = np.concatenate([preds.flatten() for preds in all_preds.values()])
-
     cm = confusion_matrix(y_true=all_flattened_labels, y_pred=all_flattened_preds)
-    ConfusionMatrixDisplay(cm)
+    ConfusionMatrixDisplay(cm).plot()
+    plt.savefig("TestConfusionMatrix.png")
     plt.show()
