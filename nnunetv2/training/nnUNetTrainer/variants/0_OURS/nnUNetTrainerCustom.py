@@ -1,3 +1,5 @@
+from os.path import join
+
 import torch
 
 from nnunetv2.training.dataloading.data_loader_2d import nnUNetDataLoader2D
@@ -132,6 +134,9 @@ class nnUNetTrainerEarlyStopping(nnUNetTrainer):
             if self.early_stopping.stop_training(new_score=self.logger.my_fantastic_logging['ema_fg_dice'][-1]):
                 self.print_to_log_file("EarlyStopping: Stop training")
                 break
+            else:
+                if (self.early_stopping.counter > 0) & (self.early_stopping.counter % 10 == 0):
+                    self.save_checkpoint(join(self.output_folder, "checkpoint_latest.pth"))
 
         self.on_train_end()
 
@@ -244,6 +249,24 @@ class nnUNetTrainerExtremeOversamplingEarlyStoppingVeryLowLR(nnUNetTrainerExtrem
         self.print_to_log_file("Initial lr:", self.initial_lr)
 
 
+class nnUNetTrainerExtremeOversamplingEarlyStoppingVeryLowLRVeryHighDecay(
+    nnUNetTrainerExtremeOversamplingEarlyStopping):
+    def __init__(
+            self,
+            plans: dict,
+            configuration: str,
+            fold: int,
+            dataset_json: dict,
+            unpack_dataset: bool = True,
+            device: torch.device = torch.device('cuda')
+    ):
+        super().__init__(plans, configuration, fold, dataset_json, unpack_dataset, device)
+        self.initial_lr = 5e-4
+        self.print_to_log_file("Initial lr:", self.initial_lr)
+        self.weight_decay = 5e-4
+        self.print_to_log_file("Weight decay:", self.weight_decay)
+
+
 class nnUNetTrainerExtremeOversamplingEarlyStoppingLowLRHigherDecay(nnUNetTrainerExtremeOversamplingEarlyStopping):
     def __init__(
             self,
@@ -257,5 +280,5 @@ class nnUNetTrainerExtremeOversamplingEarlyStoppingLowLRHigherDecay(nnUNetTraine
         super().__init__(plans, configuration, fold, dataset_json, unpack_dataset, device)
         self.initial_lr = 1e-3
         self.print_to_log_file("Initial lr:", self.initial_lr)
-        self.weight_decay = 5e-4
+        self.weight_decay = 1e-4
         self.print_to_log_file("Weight decay:", self.weight_decay)
