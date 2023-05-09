@@ -94,8 +94,10 @@ def get_all_preds_and_labels(ids: List[str], test_dataset: TestDataset):
 
 
 def compute_lesion_level_metrics(labels, preds, lesion_class: int):
-    gt_lesions, n_gt_lesions = label((labels == lesion_class).astype(int))
-    predicted_lesions, n_predicted_lesions = label((preds == lesion_class).astype(int))
+    gt_lesions, n_gt_lesions = label((labels == lesion_class).astype(int),
+                                     structure=np.ones(shape=(3, 3, 3)))
+    predicted_lesions, n_predicted_lesions = label((preds == lesion_class).astype(int),
+                                                   structure=np.ones(shape=(3, 3, 3)))
     # Making lesion names disjoint:
     new_predicted_lesions = np.copy(predicted_lesions)
     for pred_lesion_id in range(1, n_predicted_lesions + 1):
