@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  nnunetv2:
+    container_name: nnunetv2
+    image: nnunetv2
+    build: .
+    volumes:
+      - ./data/input:/nnunet-ms-segmentation/data/input/
+      - ./data/output:/nnunet-ms-segmentation/data/output/
+    command: /bin/sh predict.sh
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
