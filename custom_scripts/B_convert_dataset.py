@@ -31,7 +31,7 @@ dataset_json = {
         "Basal-lesions": 1,
         "New-lesions": 2
     },
-    "numTraining": 117,
+    "numTraining": 81,
     "file_ending": ".nii.gz"
 }
 with open(RAW_DATASET_DIR / 'dataset.json', 'w') as f:
