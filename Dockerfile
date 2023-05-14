@@ -41,8 +41,8 @@ COPY $model_dir/fold_3/checkpoint_final.pth $model_dir/fold_3/checkpoint_final.p
 COPY $model_dir/fold_4/checkpoint_final.pth $model_dir/fold_4/checkpoint_final.pth
 
 # Making necessary directories:
-RUN mkdir -p data/input
-RUN mkdir data/output
+RUN mkdir input
+RUN mkdir output
 
 # Install nnunetv2
 RUN pip3 install -e .
@@ -51,6 +51,7 @@ RUN pip3 install -e .
 ENV nnUNet_raw="./data/nnUNet_raw_data"
 ENV nnUNet_preprocessed="./data/nnUNet_preprocessed_data"
 ENV nnUNet_results="./nnUNet_results"
-
+# Custom cache invalidation
+RUN echo "Hello!"
 # Copy predict script:
 COPY predict.sh predict.sh

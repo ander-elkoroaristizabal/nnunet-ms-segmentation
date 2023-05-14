@@ -2,8 +2,8 @@
 dataset=100
 conf=3d_fullres
 trainer=nnUNetTrainerExtremeOversamplingEarlyStoppingLowLR
-input_folder=./data/input
-output_folder=./data/output
+input_folder=./input
+output_folder=./output
 
 # Predict
 nnUNetv2_predict -d $dataset -i $input_folder -o $output_folder -f  0 1 2 3 4 -tr $trainer -c $conf -p nnUNetPlans

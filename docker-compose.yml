@@ -6,8 +6,8 @@ services:
     image: nnunetv2
     build: .
     volumes:
-      - ./data/input:/nnunet-ms-segmentation/data/input/
-      - ./data/output:/nnunet-ms-segmentation/data/output/
+      - ./input:/nnunet-ms-segmentation/data/input/
+      - ./output:/nnunet-ms-segmentation/data/output/
     command: /bin/sh predict.sh
     deploy:
       resources:
