@@ -214,6 +214,12 @@ if __name__ == '__main__':
     # Results on with-lesions subset:
     print(MSSEG2_results_df.loc[MSSEG2_results_df.new_n_ref > 0, :])
 
+    # Results by subset:
+    # Bad resolution images (from MS Open Data):
+    print(MSSEG2_results_df[MSSEG2_results_df.case_id.str.contains('patient')].describe())
+    # Good resolution images (from MSSEG-2):
+    print(MSSEG2_results_df[~MSSEG2_results_df.case_id.str.contains('patient')].describe())
+
     # Confusion matrix:
     all_flattened_labels = np.concatenate([labels.flatten() for labels in all_labels.values()])
     all_flattened_preds = np.concatenate([preds.flatten() for preds in all_preds.values()])
