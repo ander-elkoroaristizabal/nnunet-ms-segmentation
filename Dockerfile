@@ -29,12 +29,20 @@ COPY nnunetv2 nnunetv2
 # nnunetv2 install script:
 COPY setup.py setup.py
 # Trained models:
-COPY nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStoppingLowLR__nnUNetPlans__3d_fullres \
-    nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStoppingLowLR__nnUNetPlans__3d_fullres
+ARG model_dir=nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStoppingLowLR__nnUNetPlans__3d_fullres
+RUN mkdir -p $model_dir
+COPY $model_dir/dataset.json $model_dir/dataset.json
+COPY $model_dir/plans.json $model_dir/plans.json
+COPY $model_dir/fold_0/checkpoint_final.pth $model_dir/fold_0/checkpoint_final.pth
+COPY $model_dir/fold_0/checkpoint_final.pth $model_dir/fold_0/checkpoint_final.pth
+COPY $model_dir/fold_1/checkpoint_final.pth $model_dir/fold_1/checkpoint_final.pth
+COPY $model_dir/fold_2/checkpoint_final.pth $model_dir/fold_2/checkpoint_final.pth
+COPY $model_dir/fold_3/checkpoint_final.pth $model_dir/fold_3/checkpoint_final.pth
+COPY $model_dir/fold_4/checkpoint_final.pth $model_dir/fold_4/checkpoint_final.pth
 
 # Making necessary directories:
 RUN mkdir -p data/input
-RUN mkdir -p data/output
+RUN mkdir data/output
 
 # Install nnunetv2
 RUN pip3 install -e .
