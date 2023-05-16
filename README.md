@@ -9,6 +9,8 @@ The dataset is composed by longitudinal FLAIR MRI images of approximately 100 pe
 the [Hospital Clínic de Barcelona (HCB)](https://www.clinicbarcelona.org/),
 together with the target masks validated by professionals from the ImaginEM research team from the HCB.
 
+The model generated can be accessed upon a fair request.
+
 ## Using the docker image
 
 There are two ways of building and running the Docker image,
