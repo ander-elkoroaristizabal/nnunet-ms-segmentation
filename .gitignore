@@ -112,3 +112,4 @@ ENV/
 *.model
 
 !.gitkeep
+/nnunetv2.tar
