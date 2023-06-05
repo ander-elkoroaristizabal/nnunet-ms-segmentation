@@ -46,6 +46,7 @@ MSSEG2_ANALYSIS_DIR = ROOT / "NEW_LESIONS_CHALLENGE" / "Analysis"
 
 
 # Enums
-class TestDataset(str, Enum):
+class Dataset(str, Enum):
+    train_split = "train_split"
     test_split = "test_split"
     msseg2 = "MSSEG2"
