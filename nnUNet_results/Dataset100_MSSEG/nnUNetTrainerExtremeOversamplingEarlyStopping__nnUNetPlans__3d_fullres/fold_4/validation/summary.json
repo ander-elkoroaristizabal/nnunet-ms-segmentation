@@ -55,7 +55,7 @@
                     "n_ref": 0
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/FIS_025_01.nii.gz",
+            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/FIS_025_01.nii.gz",
             "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_025_01.nii.gz"
         },
         {
@@ -81,7 +81,7 @@
                     "n_ref": 0
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/FIS_032_01.nii.gz",
+            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/FIS_032_01.nii.gz",
             "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_032_01.nii.gz"
         },
         {
@@ -107,7 +107,7 @@
                     "n_ref": 2845
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/FIS_046_01.nii.gz",
+            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/FIS_046_01.nii.gz",
             "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_046_01.nii.gz"
         },
         {
@@ -133,7 +133,7 @@
                     "n_ref": 0
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/FIS_055_01.nii.gz",
+            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/FIS_055_01.nii.gz",
             "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_055_01.nii.gz"
         },
         {
@@ -159,7 +159,7 @@
                     "n_ref": 445
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/FIS_071_01.nii.gz",
+            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/FIS_071_01.nii.gz",
             "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_071_01.nii.gz"
         },
         {
@@ -185,7 +185,7 @@
                     "n_ref": 3
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/FIS_105_01.nii.gz",
+            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/FIS_105_01.nii.gz",
             "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_105_01.nii.gz"
         },
         {
@@ -211,7 +211,7 @@
                     "n_ref": 82
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/FIS_116_01.nii.gz",
+            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/FIS_116_01.nii.gz",
             "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_116_01.nii.gz"
         },
         {
@@ -237,7 +237,7 @@
                     "n_ref": 69
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/FIS_124_01.nii.gz",
+            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/FIS_124_01.nii.gz",
             "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/FIS_124_01.nii.gz"
         },
         {
@@ -263,7 +263,7 @@
                     "n_ref": 0
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/REHEM_111_01.nii.gz",
+            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/REHEM_111_01.nii.gz",
             "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_111_01.nii.gz"
         },
         {
@@ -289,7 +289,7 @@
                     "n_ref": 0
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/REHEM_16_01.nii.gz",
+            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/REHEM_16_01.nii.gz",
             "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_16_01.nii.gz"
         },
         {
@@ -315,7 +315,7 @@
                     "n_ref": 0
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/REHEM_18_01.nii.gz",
+            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/REHEM_18_01.nii.gz",
             "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_18_01.nii.gz"
         },
         {
@@ -341,7 +341,7 @@
                     "n_ref": 0
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/REHEM_34_01.nii.gz",
+            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/REHEM_34_01.nii.gz",
             "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_34_01.nii.gz"
         },
         {
@@ -367,7 +367,7 @@
                     "n_ref": 0
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/REHEM_55_01.nii.gz",
+            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/REHEM_55_01.nii.gz",
             "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_55_01.nii.gz"
         },
         {
@@ -393,7 +393,7 @@
                     "n_ref": 0
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/REHEM_68_01.nii.gz",
+            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/REHEM_68_01.nii.gz",
             "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_68_01.nii.gz"
         },
         {
@@ -419,7 +419,7 @@
                     "n_ref": 0
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/REHEM_75_01.nii.gz",
+            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/REHEM_75_01.nii.gz",
             "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_75_01.nii.gz"
         },
         {
@@ -445,7 +445,7 @@
                     "n_ref": 0
                 }
             },
-            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerFullOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/REHEM_86_01.nii.gz",
+            "prediction_file": "./nnUNet_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStopping__nnUNetPlans__3d_fullres/fold_4/validation/REHEM_86_01.nii.gz",
             "reference_file": "./data/nnUNet_preprocessed_data/Dataset100_MSSEG/gt_segmentations/REHEM_86_01.nii.gz"
         }
     ]
