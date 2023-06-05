@@ -11,57 +11,29 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import ConfusionMatrixDisplay, confusion_matrix
 
 from custom_scripts.A_config import (
-    TERMINATION,
     TEST_IMAGES_DIR,
-    TEST_LABELS_DIR,
     NNUNET_TEST_RESULTS_PATH,
     DATASET,
     PLAN,
     CONFIGURATION,
     MSSEG2_PREDICTIONS_DIR,
     MSSEG2_LABELS_DIR,
-    MSSEG2_IMAGES_DIR,
-    TestDataset
+    NNUNET_RESULTS_PATH,
+    TEST_LABELS_DIR,
+    Dataset
 )
+import custom_scripts.utils as utils
 from nnunetv2.inference.predict_from_raw_data import predict_from_raw_data
 from nnunetv2.evaluation.evaluate_predictions import compute_metrics_on_folder_simple, load_summary_json
 from scipy.ndimage import label
 
 
-def get_paths(case_id: str, test_dataset: TestDataset, basal_im: bool = False, follow_up_im: bool = False,
-              labels: bool = False,
-              preds: bool = False):
-    ans = list()
-    if test_dataset == TestDataset.msseg2:
-        images_dir = MSSEG2_IMAGES_DIR
-        labels_dir = MSSEG2_LABELS_DIR
-        predictions_dir = MSSEG2_PREDICTIONS_DIR
-    else:
-        images_dir = TEST_IMAGES_DIR
-        labels_dir = TEST_LABELS_DIR
-        predictions_dir = TEST_PREDICTIONS_FOLDER
-    if basal_im:
-        ans.append(os.path.join(images_dir, f"{case_id}_0000" + TERMINATION))
-    if follow_up_im:
-        ans.append(os.path.join(images_dir, f"{case_id}_0001" + TERMINATION))
-    if labels:
-        ans.append(os.path.join(labels_dir, case_id + TERMINATION))
-    if preds:
-        ans.append(os.path.join(predictions_dir, case_id + TERMINATION))
-    return tuple(ans)
+def read_labels_and_preds(case_id: str, dataset: Dataset):
+    if dataset == Dataset.test_split:
+        utils.TEST_PREDICTIONS_FOLDER = TEST_PREDICTIONS_FOLDER
 
-
-def read_images(case_id: str, test_dataset: TestDataset):
-    b_image_path, fu_image_path = get_paths(case_id=case_id, test_dataset=test_dataset,
-                                            basal_im=True, follow_up_im=True)
-    b_image = nib.load(b_image_path).get_fdata()
-    fu_image = nib.load(fu_image_path).get_fdata()
-    return b_image, fu_image
-
-
-def read_labels_and_preds(case_id: str, test_dataset: TestDataset):
-    labels_path, predictions_path = get_paths(case_id=case_id, test_dataset=test_dataset,
-                                              labels=True, preds=True)
+    labels_path, predictions_path = utils.get_paths(case_id=case_id, dataset=dataset,
+                                                    labels=True, preds=True)
     labels = nib.load(labels_path).get_fdata()
     predictions = nib.load(predictions_path).get_fdata()
     return labels, predictions
@@ -83,11 +55,11 @@ def format_results_into_df(all_results: Dict):
     return pd.DataFrame.from_records(data=results)
 
 
-def get_all_preds_and_labels(ids: List[str], test_dataset: TestDataset):
+def get_all_preds_and_labels(ids: List[str], dataset: Dataset):
     labels = dict()
     preds = dict()
     for case in tqdm(ids):
-        sample_labels, sample_predictions = read_labels_and_preds(case_id=case, test_dataset=test_dataset)
+        sample_labels, sample_predictions = read_labels_and_preds(case_id=case, dataset=dataset)
         labels[case] = sample_labels
         preds[case] = sample_predictions
     return labels, preds
@@ -105,11 +77,13 @@ def compute_lesion_level_metrics(labels, preds, lesion_class: int):
         new_pred_lesion_id = pred_lesion_id + n_gt_lesions
         # print(f"{new_pred_lesion_id = }")
         new_predicted_lesions[predicted_lesions == pred_lesion_id] = new_pred_lesion_id
+    # We compute TPs, FPs and FNs taking into account that
+    # two predicted lesions may correspond to a single real or vice-versa:
     tp_gt = set(np.unique(gt_lesions[(gt_lesions > 0) & (predicted_lesions > 0)]))
     tp_pred = set(np.unique(new_predicted_lesions[(gt_lesions > 0) & (new_predicted_lesions > 0)]))
     fp = set(np.unique(new_predicted_lesions[(gt_lesions == 0) & (new_predicted_lesions > 0)])) - tp_pred
     fn = set(np.unique(gt_lesions[(gt_lesions > 0) & (new_predicted_lesions == 0)])) - tp_gt
-    tn = set(np.unique(gt_lesions[(gt_lesions == 0) & (new_predicted_lesions == 0)]))
+    # tn = set(np.unique(gt_lesions[(gt_lesions == 0) & (new_predicted_lesions == 0)]))
     tp = len(tp_gt)
     fp = len(fp)
     fn = len(fn)
@@ -126,9 +100,9 @@ def compute_all_lesion_level_metrics(ids, labels_dict, preds_dict, lesion_class=
                                                                 preds=preds_dict[case],
                                                                 lesion_class=lesion_class)
         try:
-            F1 = 2 * tp / (2 * tp + fp + fn)
+            f1 = 2 * tp / (2 * tp + fp + fn)
         except ZeroDivisionError:
-            F1 = np.NAN
+            f1 = np.NAN
         lesion_level_metrics.append({
             "case_id": case,
             f"n_ref_{lesion_str}_lesions": n_gt,
@@ -136,7 +110,7 @@ def compute_all_lesion_level_metrics(ids, labels_dict, preds_dict, lesion_class=
             f"{lesion_str}_lesion_tp": tp,
             f"{lesion_str}_lesion_fp": fp,
             f"{lesion_str}_lesion_fn": fn,
-            f"{lesion_str}_lesion_F1": F1
+            f"{lesion_str}_lesion_F1": f1
         })
     return pd.DataFrame.from_records(data=lesion_level_metrics)
 
@@ -149,9 +123,9 @@ if __name__ == '__main__':
 
     # Configuration to be modified
     TRAINER = "nnUNetTrainerExtremeOversamplingEarlyStoppingLowLR"
-    FOLDS = "0 1 2 3 4"
+    FOLDS = (0, 1, 2, 3, 4)
     CHECKPOINT_TB_USED = "checkpoint_final.pth"
-    extra_info = ""  # "__FOLD4"
+    extra_info = ""
 
     # Derived settings:
     MODEL_FOLDER_NAME = TRAINER + '__' + PLAN + "__" + CONFIGURATION
@@ -159,9 +133,9 @@ if __name__ == '__main__':
     TEST_PREDICTIONS_FOLDER = os.path.join(NNUNET_TEST_RESULTS_PATH, DATASET, TEST_SPECIFIC_FOLDER_NAME)
 
     predict_from_raw_data(
-        list_of_lists_or_source_folder=TEST_IMAGES_DIR,
+        list_of_lists_or_source_folder=str(TEST_IMAGES_DIR),
         output_folder=TEST_PREDICTIONS_FOLDER,
-        model_training_output_dir=MODEL_FOLDER_NAME,
+        model_training_output_dir=str(NNUNET_RESULTS_PATH / DATASET / MODEL_FOLDER_NAME),
         use_folds=FOLDS,
         verbose=True,
         checkpoint_name=CHECKPOINT_TB_USED,
@@ -169,9 +143,9 @@ if __name__ == '__main__':
     )
 
     compute_metrics_on_folder_simple(
-        folder_ref=MSSEG2_LABELS_DIR,
-        folder_pred=MSSEG2_PREDICTIONS_DIR,
-        labels=[2]
+        folder_ref=TEST_LABELS_DIR,
+        folder_pred=TEST_PREDICTIONS_FOLDER,
+        labels=[1, 2]
     )
 
     # Loading results:
@@ -183,11 +157,16 @@ if __name__ == '__main__':
     # Getting labels and predictions:
     test_images = os.listdir(TEST_IMAGES_DIR)
     test_ids = sorted({file_name.split(".")[0][:-5] for file_name in test_images})
-    all_labels, all_preds = get_all_preds_and_labels(ids=test_ids, test_dataset=TestDataset.test_split)
+    all_labels, all_preds = get_all_preds_and_labels(ids=test_ids, dataset=Dataset.test_split)
 
     # Adding lesion-wise results:
-    test_lesion_wise_res = compute_all_lesion_level_metrics(ids=test_ids, labels_dict=all_labels, preds_dict=all_preds)
-    test_results_df = test_results_df.merge(test_lesion_wise_res, on='case_id')
+    b_test_lesion_wise_res = compute_all_lesion_level_metrics(ids=test_ids, labels_dict=all_labels,
+                                                              preds_dict=all_preds, lesion_class=1)
+    n_test_lesion_wise_res = compute_all_lesion_level_metrics(ids=test_ids, labels_dict=all_labels,
+                                                              preds_dict=all_preds)
+
+    test_results_df = test_results_df.merge(n_test_lesion_wise_res, on='case_id')
+    test_results_df = test_results_df.merge(b_test_lesion_wise_res, on='case_id')
 
     # Results on no-lesions subset:
     new_cols_mask = (test_results_df.columns == "case_id") | test_results_df.columns.str.contains("new_")
@@ -203,22 +182,23 @@ if __name__ == '__main__':
     # Getting labels and predictions:
     test_images = os.listdir(MSSEG2_LABELS_DIR)
     test_ids = sorted({file_name[:-7] for file_name in test_images})
-    all_labels, all_preds = get_all_preds_and_labels(ids=test_ids, test_dataset=TestDataset.msseg2)
+    all_labels, all_preds = get_all_preds_and_labels(ids=test_ids, dataset=Dataset.msseg2)
 
     # Adding lesion-wise results:
     lesion_wise_res = compute_all_lesion_level_metrics(ids=test_ids, labels_dict=all_labels, preds_dict=all_preds)
     MSSEG2_results_df = MSSEG2_results_df.merge(lesion_wise_res, on='case_id')
+    M_new_cols_mask = (MSSEG2_results_df.columns == "case_id") | MSSEG2_results_df.columns.str.contains("new_")
 
     # Results on no-lesions subset:
-    print(MSSEG2_results_df.loc[MSSEG2_results_df.new_n_ref == 0, :])
+    print(MSSEG2_results_df.loc[MSSEG2_results_df.new_n_ref == 0, M_new_cols_mask])
     # Results on with-lesions subset:
-    print(MSSEG2_results_df.loc[MSSEG2_results_df.new_n_ref > 0, :])
+    print(MSSEG2_results_df.loc[MSSEG2_results_df.new_n_ref > 0, M_new_cols_mask])
 
     # Results by subset:
     # Bad resolution images (from MS Open Data):
-    print(MSSEG2_results_df[MSSEG2_results_df.case_id.str.contains('patient')].describe())
+    print(MSSEG2_results_df.loc[MSSEG2_results_df.case_id.str.contains('patient'), M_new_cols_mask].describe())
     # Good resolution images (from MSSEG-2):
-    print(MSSEG2_results_df[~MSSEG2_results_df.case_id.str.contains('patient')].describe())
+    print(MSSEG2_results_df.loc[~MSSEG2_results_df.case_id.str.contains('patient'), M_new_cols_mask].describe())
 
     # Confusion matrix:
     all_flattened_labels = np.concatenate([labels.flatten() for labels in all_labels.values()])

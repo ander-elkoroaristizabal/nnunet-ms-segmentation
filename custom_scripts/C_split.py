@@ -1,14 +1,9 @@
 import json
 import os
-import pathlib
 import shutil
-from typing import List
 
-import nibabel as nib
 import numpy as np
-from scipy.ndimage import label
 import pandas as pd
-from tqdm import tqdm
 from sklearn.model_selection import StratifiedKFold, train_test_split
 
 from custom_scripts.A_config import (
@@ -19,57 +14,7 @@ from custom_scripts.A_config import (
     TEST_LABELS_DIR,
     PREPROCESSED_DATASET_DIR
 )
-
-
-def detect_lesions(mask: nib.nifti1.Nifti1Image):
-    """Detect and label different lesions by using a pattern.
-
-    Args:
-        mask: nifti image with the mask
-
-    Returns:
-        basal_lesions_map: image with a different label (int) for each lesion
-        joint_lesions: a dict with basal and new lesion identifiers
-    """
-    # Detecting lesions:
-    basal_lesions_map, n_basal_lesions = label((mask.get_fdata() == 1).astype(int))
-    followup_lesions_map, n_followup_lesions = label((mask.get_fdata() == 2).astype(int))
-    # Merging results:
-    new_lesion_ids = []
-    for new_lesion in range(1, n_followup_lesions + 1):
-        new_lesion_id = new_lesion + n_basal_lesions
-        basal_lesions_map[followup_lesions_map == new_lesion] = new_lesion_id
-        new_lesion_ids.append(new_lesion_id)
-    joint_lesions = {'basal': list(range(1, n_basal_lesions + 1)), 'new': new_lesion_ids}
-    return basal_lesions_map, joint_lesions
-
-
-def analyse_cases(ids: List[str], labels_dir: pathlib.Path):
-    analysis_results = []
-    for case_id in tqdm(ids):
-        case_mask = nib.load(labels_dir / (case_id + TERMINATION))
-        lesions_map, lesions = detect_lesions(case_mask)
-        total_basal_lesion_vol = (case_mask.get_fdata() == 1).sum()
-        total_new_lesion_vol = (case_mask.get_fdata() == 2).sum()
-        mean_basal_lesion_vol = np.median([(lesions_map == b_lesion).sum() for b_lesion in lesions['basal']])
-        median_basal_lesion_vol = np.mean([(lesions_map == b_lesion).sum() for b_lesion in lesions['basal']])
-        mean_new_lesion_vol = np.median([(lesions_map == b_lesion).sum() for b_lesion in lesions['new']])
-        median_new_lesion_vol = np.mean([(lesions_map == b_lesion).sum() for b_lesion in lesions['new']])
-        case_results = {
-            "case_id": case_id,
-            "n_lesions": len(lesions['basal']) + len(lesions['new']),
-            "n_basal_lesions": len(lesions['basal']),
-            "n_new_lesions": len(lesions['new']),
-            "mean_basal_lesion_vol": mean_basal_lesion_vol,
-            "median_basal_lesion_vol": median_basal_lesion_vol,
-            "total_basal_lesion_vol": total_basal_lesion_vol,
-            "mean_new_lesion_vol": mean_new_lesion_vol,
-            "median_new_lesion_vol": median_new_lesion_vol,
-            "total_new_lesion_vol": total_new_lesion_vol
-        }
-        analysis_results.append(case_results)
-    return pd.DataFrame.from_records(analysis_results)
-
+from custom_scripts.utils import analyse_cases
 
 if __name__ == '__main__':
     # Loading ids:
@@ -82,8 +27,6 @@ if __name__ == '__main__':
         assert len(all_ids) == 117
     except AssertionError:
         raise ValueError("This script is intended to be run just once!")
-
-    # TODO ander 12/4/23: Why does measuring volume on the lesion mask give different results?
 
     # Extracting stats from all images:
     lesions_analysis = analyse_cases(ids=all_ids, labels_dir=TRAIN_LABELS_DIR)
@@ -100,7 +43,7 @@ if __name__ == '__main__':
     lesions_analysis['bl_bin'] = pd.qcut(lesions_analysis['n_basal_lesions'], 3)
     lesions_analysis['nl_bin'] = pd.cut(
         lesions_analysis['n_new_lesions'],
-        bins=[0, 1, 5, np.inf],  # TODO Ander 14/4/23: Comment with Eloy whether there is a more suitable split
+        bins=[0, 1, 5, np.inf],
         right=False
     )
     # Combining both criteria:
