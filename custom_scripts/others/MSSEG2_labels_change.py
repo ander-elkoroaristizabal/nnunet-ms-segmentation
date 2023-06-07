@@ -1,3 +1,6 @@
+"""
+This script performs the conversion of the MSSEG-2 + MS Open Data datasets to a format suitable for nnU-Net.
+"""
 import os
 import re
 

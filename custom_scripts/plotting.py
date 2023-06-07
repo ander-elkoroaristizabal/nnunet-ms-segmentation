@@ -5,9 +5,10 @@ from matplotlib import colors, pyplot as plt
 
 
 def axes_plot(sample_im: np.ndarray, slices: Union[Tuple[int], None] = None):
+    """Plot all three axes of a sample image. If 'slices', use custom slices."""
     if not slices:
-        imshape = sample_im.shape
-        slices = (imshape[0] // 2, imshape[1] // 2, imshape[2] // 2)
+        im_shape = sample_im.shape
+        slices = (im_shape[0] // 2, im_shape[1] // 2, im_shape[2] // 2)
     # Axes plot:
     f, (p1, p2, p3) = plt.subplots(1, 3, figsize=(9, 6), gridspec_kw={'width_ratios': [1, 210 / 180, (210 / 180) ** 2]})
     # Sagittal plane:
@@ -21,18 +22,30 @@ def axes_plot(sample_im: np.ndarray, slices: Union[Tuple[int], None] = None):
     p3.set_title('Axial plane')
 
 
-# TODO Ander 18/5/23: Candidates for refactor.
+def get_limits(central_voxel: Tuple[int], patch_size: int, im_shape: Tuple[int]):
+    """Get the limits of the patch of size 'patch_size' around 'central_voxel' and within image limits."""
+    # Initial limits:
+    s_limits = [central_voxel[0] - patch_size, central_voxel[0] + patch_size]
+    c_limits = [central_voxel[1] - patch_size, central_voxel[1] + patch_size]
+    a_limits = [central_voxel[2] - patch_size, central_voxel[2] + patch_size]
+    # Fitting them to the image size:
+    for i, limits in enumerate([s_limits, c_limits, a_limits]):
+        limits[0] = max(limits[0], 0)
+        limits[1] = min(limits[1], im_shape[i])
+    return s_limits, c_limits, a_limits
+
+
 def plot_basal_lesion(b_im, fu_im, labels, central_voxel=None, patch_size: int = 25):
+    """Plot basal lesions in a patch of size 'patch_size' around the 'central_voxel'."""
     # Masking others:
     only_basal_lesions = np.ma.masked_where(labels != 1, labels)
     orange = colors.ListedColormap(['darkorange'])
     # Limits:
-    s_limits = [central_voxel[0] - patch_size, central_voxel[0] + patch_size]
-    c_limits = [central_voxel[1] - patch_size, central_voxel[1] + patch_size]
-    a_limits = [central_voxel[2] - patch_size, central_voxel[2] + patch_size]
-    for i, limits in enumerate([s_limits, c_limits, a_limits]):
-        limits[0] = max(limits[0], 0)
-        limits[1] = min(limits[1], b_im.shape[i])
+    s_limits, c_limits, a_limits = get_limits(
+        central_voxel=central_voxel,
+        patch_size=patch_size,
+        im_shape=b_im.shape
+    )
     # Plot:
     f, (r1, r2, r3) = plt.subplots(3, 3, figsize=(10, 12))
     # Plano sagital:
@@ -78,15 +91,15 @@ def plot_basal_lesion(b_im, fu_im, labels, central_voxel=None, patch_size: int =
 
 
 def plot_new_lesion(b_im, fu_im, labels, central_voxel, patch_size: int = 25):
+    """Plot new lesions in a patch of size 'patch_size' around the 'central_voxel'."""
     only_new_lesions = np.ma.masked_where(labels != 2, labels)
     red = colors.ListedColormap(['red'])
     # Limits:
-    s_limits = [central_voxel[0] - patch_size, central_voxel[0] + patch_size]
-    c_limits = [central_voxel[1] - patch_size, central_voxel[1] + patch_size]
-    a_limits = [central_voxel[2] - patch_size, central_voxel[2] + patch_size]
-    for i, limits in enumerate([s_limits, c_limits, a_limits]):
-        limits[0] = max(limits[0], 0)
-        limits[1] = min(limits[1], b_im.shape[i])
+    s_limits, c_limits, a_limits = get_limits(
+        central_voxel=central_voxel,
+        patch_size=patch_size,
+        im_shape=b_im.shape
+    )
     # Plot:
     f, (r1, r2, r3) = plt.subplots(3, 3, figsize=(10, 12))
     # Plano sagital:
@@ -132,15 +145,15 @@ def plot_new_lesion(b_im, fu_im, labels, central_voxel, patch_size: int = 25):
 
 
 def plot_both_lesions(b_im, fu_im, labels, central_voxel, patch_size: int = 25):
+    """Plot basal and new lesions in a patch of size 'patch_size' around the 'central_voxel'."""
     only_new_lesions = np.ma.masked_where(labels == 0, labels)
     both = colors.ListedColormap(['darkorange', 'red'])
     # Limits:
-    s_limits = [central_voxel[0] - patch_size, central_voxel[0] + patch_size]
-    c_limits = [central_voxel[1] - patch_size, central_voxel[1] + patch_size]
-    a_limits = [central_voxel[2] - patch_size, central_voxel[2] + patch_size]
-    for i, limits in enumerate([s_limits, c_limits, a_limits]):
-        limits[0] = max(limits[0], 0)
-        limits[1] = min(limits[1], b_im.shape[i])
+    s_limits, c_limits, a_limits = get_limits(
+        central_voxel=central_voxel,
+        patch_size=patch_size,
+        im_shape=b_im.shape
+    )
     # Plot:
     f, (r1, r2, r3) = plt.subplots(3, 3, figsize=(10, 12))
     # Plano sagital:
@@ -186,16 +199,15 @@ def plot_both_lesions(b_im, fu_im, labels, central_voxel, patch_size: int = 25):
 
 
 def plot_basal_lesion_eval(b_im, fu_im, conf_mat, central_voxel, patch_size: int = 25):
+    """Plot basal lesion detection results in a patch of size 'patch_size' around the 'central_voxel'."""
     # TP is green, FP is red, FN is blue
     cmap = colors.ListedColormap(['green', 'tab:red', 'blue'])
     # Limits:
-    s_limits = [central_voxel[0] - patch_size, central_voxel[0] + patch_size]
-    c_limits = [central_voxel[1] - patch_size, central_voxel[1] + patch_size]
-    a_limits = [central_voxel[2] - patch_size, central_voxel[2] + patch_size]
-    for i, limits in enumerate([s_limits, c_limits, a_limits]):
-        limits[0] = max(limits[0], 0)
-        limits[1] = min(limits[1], b_im.shape[i])
-
+    s_limits, c_limits, a_limits = get_limits(
+        central_voxel=central_voxel,
+        patch_size=patch_size,
+        im_shape=b_im.shape
+    )
     # Plot:
     f, (r1, r2, r3) = plt.subplots(3, 3, figsize=(10, 12))
     # Plano sagital:
@@ -241,16 +253,15 @@ def plot_basal_lesion_eval(b_im, fu_im, conf_mat, central_voxel, patch_size: int
 
 
 def plot_new_lesion_eval(b_im, fu_im, conf_mat, central_voxel, patch_size: int = 25):
+    """Plot new lesion detection results in a patch of size 'patch_size' around the 'central_voxel'."""
     # TP is green, FP is red, FN is blue
     cmap = colors.ListedColormap(['green', 'red', 'blue'])
     # Limits:
-    s_limits = [central_voxel[0] - patch_size, central_voxel[0] + patch_size]
-    c_limits = [central_voxel[1] - patch_size, central_voxel[1] + patch_size]
-    a_limits = [central_voxel[2] - patch_size, central_voxel[2] + patch_size]
-    for i, limits in enumerate([s_limits, c_limits, a_limits]):
-        limits[0] = max(limits[0], 0)
-        limits[1] = min(limits[1], b_im.shape[i])
-
+    s_limits, c_limits, a_limits = get_limits(
+        central_voxel=central_voxel,
+        patch_size=patch_size,
+        im_shape=b_im.shape
+    )
     # Plot:
     f, (r1, r2, r3) = plt.subplots(3, 3, figsize=(10, 12))
     # Plano sagital:

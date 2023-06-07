@@ -1,11 +1,10 @@
+"""
+This script runs the nnU-Net Python API for model training,
+equivalent to the Command Line Interface (CLI) nnUNetv2_train command.
+"""
 import torch
-import os
 
 from custom_scripts.A_config import CONFIGURATION
-
-os.environ['nnUNet_raw'] = "./data/nnUNet_raw_data"
-os.environ['nnUNet_preprocessed'] = "./data/nnUNet_preprocessed_data"
-os.environ['nnUNet_results'] = "./nnUNet_results"
 
 from nnunetv2.run.run_training import run_training
 

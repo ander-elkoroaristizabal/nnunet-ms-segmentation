@@ -1,3 +1,7 @@
+"""
+This script performs the stratified train-test and CV train-val splits,
+and moves the test cases to the corresponding directory.
+"""
 import json
 import os
 import shutil
@@ -14,13 +18,12 @@ from custom_scripts.A_config import (
     TEST_LABELS_DIR,
     PREPROCESSED_DATASET_DIR
 )
-from custom_scripts.utils import analyse_cases
+from custom_scripts.utils import extract_id_from_image_filename, analyse_cases
 
 if __name__ == '__main__':
-    # Loading ids:
-
+    # Loading all ids:
     all_images = os.listdir(TRAIN_IMAGES_DIR)
-    all_ids = sorted({file_name.split(".")[0][:-5] for file_name in all_images})
+    all_ids = sorted({extract_id_from_image_filename(file_name) for file_name in all_images})
 
     # We should do this just once, so we should have 117 images:
     try:
@@ -40,8 +43,8 @@ if __name__ == '__main__':
     # Stratification:
 
     # Cutting into categorical:
-    lesions_analysis['bl_bin'] = pd.qcut(lesions_analysis['n_basal_lesions'], 3)
-    lesions_analysis['nl_bin'] = pd.cut(
+    lesions_analysis['bl_bin'] = pd.qcut(lesions_analysis['n_basal_lesions'], 3)  # Cutting by quantiles
+    lesions_analysis['nl_bin'] = pd.cut(  # Cutting by specific boundaries
         lesions_analysis['n_new_lesions'],
         bins=[0, 1, 5, np.inf],
         right=False
@@ -50,7 +53,7 @@ if __name__ == '__main__':
     lesions_analysis['stratification_bin'] = (
             lesions_analysis['bl_bin'].astype(str) + ' & ' + lesions_analysis['nl_bin'].astype(str)
     )
-    # Unifying continuous rare class for easier splitting:
+    # Unifying "contiguous" rare class for easier splitting:
     rare_classes = ['(39.667, 75.0] & [1.0, 5.0)', '(39.667, 75.0] & [5.0, inf)']
     lesions_analysis.loc[
         lesions_analysis['stratification_bin'].isin(rare_classes), 'stratification_bin'
@@ -79,6 +82,7 @@ if __name__ == '__main__':
 
     cv_folds = []
     skf = StratifiedKFold(n_splits=5)
+    # Generation of the "splits_final.json" file:
     for train, val in skf.split(X=train_val_ids, y=train_stratification_bins):
         fold = {
             "train": train_val_ids.iloc[train].tolist(),

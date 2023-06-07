@@ -1,3 +1,12 @@
+"""
+This module contains all the configuration variables and classes,
+such as:
+    1) The paths of nnU-Net, which also adds to the environment vars,
+    2) Other fixed variables of nnU-Net, such as the name of the dataset,
+    the configuration or the plans.
+    3) Other relevant paths, such as the paths to the train,
+    test and MSSEG-2 images and labels.
+"""
 import os
 from enum import Enum
 from pathlib import Path
@@ -7,7 +16,7 @@ import pandas as pd
 pd.set_option('display.max_columns', 15)
 pd.set_option('display.width', 900)
 
-# General Paths
+# General Paths for nnU-Net
 ROOT = Path(__file__).resolve().parents[1]
 ORIGINAL_DATA_PATH = ROOT / "NEW_LESIONS_IMAGINEM"
 NNUNET_RAW_PATH = ROOT / "data" / "nnUNet_raw_data"
@@ -15,7 +24,6 @@ NNUNET_PREPROCESSED_PATH = ROOT / "data" / "nnUNet_preprocessed_data"
 NNUNET_RESULTS_PATH = ROOT / "nnUNet_results"
 
 # Exporting general paths
-
 os.environ['nnUNet_raw'] = str(NNUNET_RAW_PATH)
 os.environ['nnUNet_preprocessed'] = str(NNUNET_PREPROCESSED_PATH)
 os.environ['nnUNet_results'] = str(NNUNET_RESULTS_PATH)

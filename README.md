@@ -1,6 +1,6 @@
 ﻿# Automatic detection of new or evolving lesions in Multiple Sclerosis
 
-## Introduction:
+## Introduction
 
 This repository contains code for training Deep Learning models
 for the automatic segmentation of both basal and new or evolving Multiple Sclerosis (MS) lesions.
@@ -67,3 +67,6 @@ which is also stored inside the `predict_wo_compose.sh` bash script:
 With Docker Compose you may run the image with the following command:
 
 > sudo docker compose run --rm nnunetv2
+
+## Structure of the repository:
+

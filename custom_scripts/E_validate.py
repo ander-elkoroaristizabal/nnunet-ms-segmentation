@@ -1,3 +1,7 @@
+"""
+This script runs the nnU-Net Python API for model validation,
+equivalent to the Command Line Interface (CLI) nnUNetv2_train command with --val flag.
+"""
 import torch
 
 from custom_scripts.A_config import CONFIGURATION
