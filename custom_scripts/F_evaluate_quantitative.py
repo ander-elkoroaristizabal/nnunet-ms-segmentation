@@ -224,8 +224,8 @@ if __name__ == '__main__':
     test_results_df = format_results_into_df(test_results_dict)
 
     # Getting labels and predictions:
-    test_images = os.listdir(TEST_IMAGES_DIR)
-    test_ids = sorted({file_name.split(".")[0][:-5] for file_name in test_images})
+    test_images = utils.list_all_nifti_files(TEST_IMAGES_DIR)
+    test_ids = sorted({utils.extract_id_from_image_filename(file_name) for file_name in test_images})
     all_labels, all_preds = get_all_preds_and_labels(ids=test_ids, dataset=Dataset.test_split)
 
     # Adding lesion-wise results:
@@ -249,7 +249,7 @@ if __name__ == '__main__':
     MSSEG2_results_df = format_results_into_df(MSSEG2_results_dict)
 
     # Getting labels and predictions:
-    test_images = os.listdir(MSSEG2_LABELS_DIR)
+    test_images = utils.list_all_nifti_files(MSSEG2_LABELS_DIR)
     test_ids = sorted({file_name[:-7] for file_name in test_images})
     all_labels, all_preds = get_all_preds_and_labels(ids=test_ids, dataset=Dataset.msseg2)
 

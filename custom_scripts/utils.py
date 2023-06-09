@@ -20,6 +20,11 @@ from custom_scripts.A_config import (
 )
 
 
+def list_all_nifti_files(path):
+    """List all NIFTI files in a directory."""
+    return [file for file in os.listdir(path) if file.endswith(TERMINATION)]
+
+
 def extract_id_from_image_filename(image_file_name: str) -> str:
     """Convert an image file name in nnU-Net format to its (nnU-Net) identifier."""
     return image_file_name.split(".")[0][:-5]

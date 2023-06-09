@@ -12,7 +12,7 @@ from custom_scripts.A_config import (
     TRAIN_IMAGES_DIR,
     TRAIN_LABELS_DIR
 )
-from custom_scripts.utils import extract_id_from_image_filename
+from custom_scripts.utils import extract_id_from_image_filename, list_all_nifti_files
 
 if __name__ == "__main__":
     warning = "This script should only be ran once. " \
@@ -47,7 +47,7 @@ if __name__ == "__main__":
 
     # Renaming of files:
     # Dividing files into masks and images:
-    all_files_in_origin = os.listdir(ORIGINAL_DATA_PATH)
+    all_files_in_origin = list_all_nifti_files(ORIGINAL_DATA_PATH)
     mask_files = [file_name for file_name in all_files_in_origin if "mask" in file_name]
     raw_files = [file_name for file_name in all_files_in_origin if "mask" not in file_name]
 

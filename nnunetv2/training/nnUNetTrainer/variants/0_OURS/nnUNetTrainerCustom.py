@@ -1,13 +1,14 @@
+"""
+This module contains the custom nnUNetTrainer classes we have used.
+"""
 from os.path import join
+from typing import Optional, Dict, cast, Tuple
 
 import torch
 
 from nnunetv2.training.dataloading.data_loader_2d import nnUNetDataLoader2D
 from nnunetv2.training.dataloading.data_loader_3d import MinorityClassOversampling_nnUNetDataLoader3D
 from nnunetv2.training.nnUNetTrainer.nnUNetTrainer import nnUNetTrainer
-
-from typing import Optional, Dict, cast, Tuple
-
 from nnunetv2.training.nnUNetTrainer.variants.sampling.nnUNetTrainer_probabilisticOversampling import \
     nnUNetTrainer_probabilisticOversampling
 
@@ -90,6 +91,10 @@ class EarlyStopping:
 
 
 class nnUNetTrainerEarlyStopping(nnUNetTrainer):
+    """
+    Variant of the nnU-Net using early stopping.
+    """
+
     def __init__(
             self,
             plans: dict,
@@ -142,6 +147,10 @@ class nnUNetTrainerEarlyStopping(nnUNetTrainer):
 
 
 class nnUNetTrainerHalfOversamplingEarlyStopping(nnUNetTrainerEarlyStopping, nnUNetTrainer_probabilisticOversampling):
+    """
+    Variant of the nnU-Net using early stopping and a 50% of oversampling in each batch.
+    """
+
     def __init__(
             self,
             plans: dict,
@@ -157,6 +166,10 @@ class nnUNetTrainerHalfOversamplingEarlyStopping(nnUNetTrainerEarlyStopping, nnU
 
 
 class nnUNetTrainerFullOversamplingEarlyStopping(nnUNetTrainerEarlyStopping, nnUNetTrainer_probabilisticOversampling):
+    """
+    Variant of the nnU-Net using early stopping and a 100% of oversampling in each batch.
+    """
+
     def __init__(
             self,
             plans: dict,
@@ -172,6 +185,10 @@ class nnUNetTrainerFullOversamplingEarlyStopping(nnUNetTrainerEarlyStopping, nnU
 
 
 class nnUNetTrainerExtremeOversamplingEarlyStopping(nnUNetTrainerFullOversamplingEarlyStopping):
+    """
+    Variant of the nnU-Net using early stopping and a 100% of oversampling of new or evolving lesions in each batch.
+    """
+
     def __init__(
             self,
             plans: dict,
@@ -220,6 +237,11 @@ class nnUNetTrainerExtremeOversamplingEarlyStopping(nnUNetTrainerFullOversamplin
 
 
 class nnUNetTrainerExtremeOversamplingEarlyStoppingLowLR(nnUNetTrainerExtremeOversamplingEarlyStopping):
+    """
+    Variant of the nnU-Net using early stopping, a 100% of oversampling of new or evolving lesions in each batch
+    and a lower Learning Rate.
+    """
+
     def __init__(
             self,
             plans: dict,
@@ -235,6 +257,11 @@ class nnUNetTrainerExtremeOversamplingEarlyStoppingLowLR(nnUNetTrainerExtremeOve
 
 
 class nnUNetTrainerExtremeOversamplingEarlyStoppingVeryLowLR(nnUNetTrainerExtremeOversamplingEarlyStopping):
+    """
+    Variant of the nnU-Net using early stopping, a 100% of oversampling of new or evolving lesions in each batch
+    and a very low Learning Rate.
+    """
+
     def __init__(
             self,
             plans: dict,
@@ -251,6 +278,11 @@ class nnUNetTrainerExtremeOversamplingEarlyStoppingVeryLowLR(nnUNetTrainerExtrem
 
 class nnUNetTrainerExtremeOversamplingEarlyStoppingVeryLowLRVeryHighDecay(
     nnUNetTrainerExtremeOversamplingEarlyStopping):
+    """
+    Variant of the nnU-Net using early stopping, a 100% of oversampling of new or evolving lesions in each batch,
+    a very low Learning Rate and a very high decay of the learning rate.
+    """
+
     def __init__(
             self,
             plans: dict,
@@ -268,6 +300,11 @@ class nnUNetTrainerExtremeOversamplingEarlyStoppingVeryLowLRVeryHighDecay(
 
 
 class nnUNetTrainerExtremeOversamplingEarlyStoppingLowLRHigherDecay(nnUNetTrainerExtremeOversamplingEarlyStopping):
+    """
+    Variant of the nnU-Net using early stopping, a 100% of oversampling of new or evolving lesions in each batch,
+    a very low Learning Rate and a higher decay of the learning rate.
+    """
+
     def __init__(
             self,
             plans: dict,
