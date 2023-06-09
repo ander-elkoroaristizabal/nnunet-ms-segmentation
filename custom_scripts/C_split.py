@@ -18,11 +18,11 @@ from custom_scripts.A_config import (
     TEST_LABELS_DIR,
     PREPROCESSED_DATASET_DIR
 )
-from custom_scripts.utils import extract_id_from_image_filename, analyse_cases
+from custom_scripts.utils import extract_id_from_image_filename, analyse_cases, list_all_nifti_files
 
 if __name__ == '__main__':
     # Loading all ids:
-    all_images = os.listdir(TRAIN_IMAGES_DIR)
+    all_images = list_all_nifti_files(TRAIN_IMAGES_DIR)
     all_ids = sorted({extract_id_from_image_filename(file_name) for file_name in all_images})
 
     # We should do this just once, so we should have 117 images:

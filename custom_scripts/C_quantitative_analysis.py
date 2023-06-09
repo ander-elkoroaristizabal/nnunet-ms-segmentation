@@ -1,5 +1,5 @@
 """
-This script performs a quantitative analysis of the dataset,
+This script performs the exploratory quantitative analysis of the dataset,
 extracting statistics at both the voxel and the lesion level.
 """
 import os
@@ -19,7 +19,7 @@ from custom_scripts.A_config import (
     MSSEG2_IMAGES_DIR,
     Dataset
 )
-from custom_scripts.utils import analyse_cases, extract_id_from_image_filename
+from custom_scripts.utils import analyse_cases, extract_id_from_image_filename, list_all_nifti_files
 
 
 def find_validation_fold(case_id: str, folds_dict):
@@ -41,10 +41,10 @@ if __name__ == "__main__":
     # Beginning of the analysis:
 
     # We get both train and test ids:
-    train_images = os.listdir(TRAIN_IMAGES_DIR)
+    train_images = list_all_nifti_files(TRAIN_IMAGES_DIR)
     train_ids = sorted({extract_id_from_image_filename(file_name) for file_name in train_images})
 
-    test_images = os.listdir(TEST_IMAGES_DIR)
+    test_images = list_all_nifti_files(TEST_IMAGES_DIR)
     test_ids = sorted({extract_id_from_image_filename(file_name) for file_name in test_images})
 
     # We load the file with the Cross-Validation splits:
