@@ -45,7 +45,7 @@ since it needs to access the GPU.
 
 Solely using Docker you can build the image with the following command:
 
-> sudo docker build -t nnunetv2 .
+> sudo docker build -t nnunetv2 -f deployment/Dockerfile .
 
 #### With Docker Compose
 
@@ -107,6 +107,8 @@ The structure of the repository is the following:
         - [plotting.py](custom_scripts/plotting.py): contains the plotting utilities.
         - [utils.py](custom_scripts/utils.py): contains the generic utilities.
 + `data`: data directory expected by nnU-Net, where the raw and preprocessed data is stored.
++ `deployment`: contains the files and scripts for the deployment of the model as a Docker container, 
+  except for the [docker-compose.yml](docker-compose.yml) that can be found at the root.
 + `documentation`: directory with nnU-Net documentation markdown files.
 + `NEW_LESIONS_CHALLENGE`: directory where the MSSEG-2 and MS Open Data datasets are stored,
   together with the predictions and results of the evaluation.
@@ -121,4 +123,4 @@ The structure of the repository is the following:
 + `nnUNet_test_results/Dataset100_MSSEG`: directory with the test results of nnU-Net trainings. Each folder is a
   specific training configuration.
 + `nnunetv2`: contains the nnU-Net v2 source code, together with the trainer we have customized for our implementation.
-  These trainers can be found in the [nnUNetTrainerCustom.py](nnunetv2%2Ftraining%2FnnUNetTrainer%2Fvariants%2F0_OURS%2FnnUNetTrainerCustom.py) script.
+  These trainers can be found in the [nnUNetTrainerCustom.py](nnunetv2/training/nnUNetTrainer/variants/0_OURS/nnUNetTrainerCustom.py) script.

@@ -108,8 +108,8 @@ ENV/
 *.jpg
 *.jpeg
 *.pth
+*.tar
 
 *.model
 
 !.gitkeep
-/nnunetv2.tar

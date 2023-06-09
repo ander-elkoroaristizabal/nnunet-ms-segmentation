@@ -51,7 +51,6 @@ RUN pip3 install -e .
 ENV nnUNet_raw="./data/nnUNet_raw_data"
 ENV nnUNet_preprocessed="./data/nnUNet_preprocessed_data"
 ENV nnUNet_results="./nnUNet_results"
-# Custom cache invalidation
-RUN echo "Hello!"
+
 # Copy predict script:
-COPY predict.sh predict.sh
+COPY deployment/predict.sh predict.sh

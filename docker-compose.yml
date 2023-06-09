@@ -4,10 +4,12 @@ services:
   nnunetv2:
     container_name: nnunetv2
     image: nnunetv2
-    build: .
+    build:
+      context: .
+      dockerfile: deployment/Dockerfile
     volumes:
-      - ./input:/nnunet-ms-segmentation/data/input/
-      - ./output:/nnunet-ms-segmentation/data/output/
+      - ./input:/nnunet-ms-segmentation/input/
+      - ./output:/nnunet-ms-segmentation/output/
     command: /bin/sh predict.sh
     deploy:
       resources:
