@@ -112,32 +112,68 @@ def compute_lesion_level_metrics(labels: np.ndarray, preds: np.ndarray, lesion_c
     Returns:
         Number of true lesions, number of predicted lesions, TPs, FPs, FNs
     """
+    # TODO Ander 11/6/23: Refactor
     # We get the array with the true different lesions of the lesion class and their number:
-    gt_lesions, n_gt_lesions = label((labels == lesion_class).astype(int),
-                                     structure=np.ones(shape=(3, 3, 3)))
+    gt_lesions, n_gt_lesions = label((labels == lesion_class).astype(int))
+    # Removing lesions smaller than 3mm:
+    for lesion_id in range(1, n_gt_lesions + 1):
+        lesion_mask = gt_lesions == lesion_id
+        lesion_size = lesion_mask.sum()
+        if lesion_size <= 3:
+            gt_lesions[lesion_mask] = 0
     # We get the array with the predicted different lesions of the lesion class and their number:
-    predicted_lesions, n_predicted_lesions = label((preds == lesion_class).astype(int),
-                                                   structure=np.ones(shape=(3, 3, 3)))
+    predicted_lesions, n_predicted_lesions = label((preds == lesion_class).astype(int))
+    for lesion_id in range(1, n_predicted_lesions + 1):
+        lesion_mask = predicted_lesions == lesion_id
+        lesion_size = lesion_mask.sum()
+        if lesion_size <= 3:
+            predicted_lesions[lesion_mask] = 0
     # Making lesion names disjoint:
     new_predicted_lesions = np.copy(predicted_lesions)
     for pred_lesion_id in range(1, n_predicted_lesions + 1):
         new_pred_lesion_id = pred_lesion_id + n_gt_lesions
         new_predicted_lesions[predicted_lesions == pred_lesion_id] = new_pred_lesion_id
     # We compute TPs, FPs and FNs taking into account that
-    # two predicted lesions may correspond to a single real or vice-versa:
-    tp_gt = set(np.unique(gt_lesions[(gt_lesions > 0) & (predicted_lesions > 0)]))
-    tp_pred = set(np.unique(new_predicted_lesions[(gt_lesions > 0) & (new_predicted_lesions > 0)]))
+    # two predicted lesions may correspond to a single real or vice-versa
+    # and requiring that 10% of the voxels are covered:
+    # TP_G (detected ground truth lesions):
+    tp_gt = set()
+    for gt_lesion in range(1, n_gt_lesions + 1):
+        lesion_mask = gt_lesions == gt_lesion
+        overlapping_preds = new_predicted_lesions[lesion_mask] > 0
+        if overlapping_preds.sum() > (0.1 * lesion_mask.sum()):
+            tp_gt |= {gt_lesion}
+    # TP_A (predicted lesions covered by GT lesions):
+    tp_pred = set()
+    for pred_lesion in range(n_gt_lesions + 1, n_predicted_lesions + n_gt_lesions + 1):
+        lesion_mask = new_predicted_lesions == pred_lesion
+        overlapping_gts = gt_lesions[lesion_mask] > 0
+        if overlapping_gts.sum() > (0.1 * lesion_mask.sum()):
+            tp_pred |= {pred_lesion}
     fp = set(np.unique(new_predicted_lesions[(gt_lesions == 0) & (new_predicted_lesions > 0)])) - tp_pred
     fn = set(np.unique(gt_lesions[(gt_lesions > 0) & (new_predicted_lesions == 0)])) - tp_gt
-    # tn = set(np.unique(gt_lesions[(gt_lesions == 0) & (new_predicted_lesions == 0)]))
     tp = len(tp_gt)
     fp = len(fp)
     fn = len(fn)
     # We make sure that our computations make sense:
-    assert len(tp_pred) + fp == n_predicted_lesions, f"{tp_pred = }, {fp = }, {n_predicted_lesions = }"
-    assert len(tp_gt) + fn == n_gt_lesions, f"{tp_gt = }, {fn = }, {n_gt_lesions = }"
+    n_predicted_lesions = len(np.unique(new_predicted_lesions)) - 1
+    n_gt_lesions = len(np.unique(gt_lesions)) - 1
+    assert len(tp_pred) + fp == n_predicted_lesions, f"{len(tp_pred) = }, {fp = }, {n_predicted_lesions = }"
+    assert len(tp_gt) + fn == n_gt_lesions, f"{len(tp_gt) = }, {fn = }, {n_gt_lesions = }"
+    # Compute the F1-Score:
+    if n_gt_lesions == 0:
+        f1 = np.NAN
+    elif (n_gt_lesions > 0) & (n_predicted_lesions == 0):
+        f1 = 0
+    else:
+        se_l = len(tp_gt) / n_gt_lesions
+        p_l = len(tp_pred) / n_predicted_lesions
+        try:
+            f1 = 2 * se_l * p_l / (se_l + p_l)
+        except ZeroDivisionError:
+            f1 = 0
     # And return the results:
-    return n_gt_lesions, n_predicted_lesions, tp, fp, fn
+    return n_gt_lesions, n_predicted_lesions, tp, fp, fn, f1
 
 
 def compute_all_lesion_level_metrics(
@@ -160,14 +196,9 @@ def compute_all_lesion_level_metrics(
     lesion_str = "new" if lesion_class == 2 else "basal"
     for case in tqdm(ids):
         # We get lesion-level metrics:
-        n_gt, n_pred, tp, fp, fn = compute_lesion_level_metrics(labels=labels_dict[case],
-                                                                preds=preds_dict[case],
-                                                                lesion_class=lesion_class)
-        # Try to compute F1-Score:
-        try:
-            f1 = 2 * tp / (2 * tp + fp + fn)
-        except ZeroDivisionError:
-            f1 = np.NAN
+        n_gt, n_pred, tp, fp, fn, f1 = compute_lesion_level_metrics(labels=labels_dict[case],
+                                                                    preds=preds_dict[case],
+                                                                    lesion_class=lesion_class)
         # Put together all metrics:
         lesion_level_metrics.append({
             "case_id": case,
@@ -211,11 +242,11 @@ if __name__ == '__main__':
             device=CUDA
         )
 
-    compute_metrics_on_folder_simple(
-        folder_ref=TEST_LABELS_DIR,
-        folder_pred=TEST_PREDICTIONS_FOLDER,
-        labels=[1, 2]
-    )
+        compute_metrics_on_folder_simple(
+            folder_ref=TEST_LABELS_DIR,
+            folder_pred=TEST_PREDICTIONS_FOLDER,
+            labels=[1, 2]
+        )
 
     # Loading results:
 
@@ -237,11 +268,18 @@ if __name__ == '__main__':
     test_results_df = test_results_df.merge(n_test_lesion_wise_res, on='case_id')
     test_results_df = test_results_df.merge(b_test_lesion_wise_res, on='case_id')
 
-    # Results on no-lesions subset:
+    # Column subsets:
     new_cols_mask = (test_results_df.columns == "case_id") | test_results_df.columns.str.contains("new_")
-    print(test_results_df.loc[test_results_df.new_n_ref == 0, new_cols_mask])
+    basal_cols_mask = ((test_results_df.columns == "case_id")
+                       | test_results_df.columns.str.contains("basal_")
+                       | test_results_df.columns.str.contains("b_"))
+    # Basal lesion results:
+    print(test_results_df.loc[:, basal_cols_mask].describe())
+    # New lesion results:
+    # Results on no-lesions subset:
+    print(test_results_df.loc[test_results_df.new_n_ref == 0, new_cols_mask].describe())
     # Results on with-lesions subset:
-    print(test_results_df.loc[test_results_df.new_n_ref > 0, new_cols_mask])
+    print(test_results_df.loc[test_results_df.new_n_ref > 0, new_cols_mask].describe())
     del all_preds, all_labels  # Memory issues
 
     # MSSEG2:
@@ -258,16 +296,16 @@ if __name__ == '__main__':
     MSSEG2_results_df = MSSEG2_results_df.merge(lesion_wise_res, on='case_id')
     M_new_cols_mask = (MSSEG2_results_df.columns == "case_id") | MSSEG2_results_df.columns.str.contains("new_")
 
-    # Results on no-lesions subset:
-    print(MSSEG2_results_df.loc[MSSEG2_results_df.new_n_ref == 0, M_new_cols_mask])
-    # Results on with-lesions subset:
-    print(MSSEG2_results_df.loc[MSSEG2_results_df.new_n_ref > 0, M_new_cols_mask])
-
     # Results by subset:
     # Bad resolution images (from MS Open Data):
+    # All cases have new lesions:
     print(MSSEG2_results_df.loc[MSSEG2_results_df.case_id.str.contains('patient'), M_new_cols_mask].describe())
     # Good resolution images (from MSSEG-2):
-    print(MSSEG2_results_df.loc[~MSSEG2_results_df.case_id.str.contains('patient'), M_new_cols_mask].describe())
+    msseg2_cases = ~MSSEG2_results_df.case_id.str.contains('patient')
+    # Results on no-lesions subset:
+    print(MSSEG2_results_df.loc[msseg2_cases & (MSSEG2_results_df.new_n_ref == 0), M_new_cols_mask].describe())
+    # Results on with-lesions subset:
+    print(MSSEG2_results_df.loc[msseg2_cases & (MSSEG2_results_df.new_n_ref > 0), M_new_cols_mask].describe())
 
     # Confusion matrix:
     all_flattened_labels = np.concatenate([labels.flatten() for labels in all_labels.values()])
