@@ -1,29 +1,61 @@
 ﻿# Automatic detection of basal and new or evolving lesions in Multiple Sclerosis
+[![License: CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg?style=for-the-badge&logo=python&logoColor=ffdd54&labelColor=blue&color=gray)
+![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
 ## Table of contents
 <!-- TOC -->
-  * [Introduction](#introduction)
-  * [Using the docker image](#using-the-docker-image)
-    * [Building the image](#building-the-image)
-      * [With Docker](#with-docker)
-      * [With Docker Compose](#with-docker-compose)
-    * [Running the image](#running-the-image)
-      * [With docker](#with-docker-1)
-      * [With Docker Compose](#with-docker-compose-1)
-  * [Structure of the repository](#structure-of-the-repository)
+* [Introduction](#introduction)
+* [Results](#results)
+  * [On the test split](#on-the-test-split)
+  * [On the MSSEG-2](#on-the-msseg-2)
+* [Using the docker image](#using-the-docker-image)
+  * [Building the image](#building-the-image)
+    * [With Docker](#with-docker)
+    * [With Docker Compose](#with-docker-compose)
+  * [Running the image](#running-the-image)
+    * [With docker](#with-docker-1)
+    * [With Docker Compose](#with-docker-compose-1)
+* [Structure of the repository](#structure-of-the-repository)
 <!-- TOC -->
 
 ## Introduction
 
 This repository contains code for training Deep Learning models
 for the automatic segmentation of both basal and new or evolving Multiple Sclerosis (MS) lesions.
-The code is an adaptation of the [nnUNet](https://github.com/MIC-DKFZ/nnUNet) code to our specific dataset.
+The code is an adaptation of the [nnUNet](https://github.com/MIC-DKFZ/nnUNet) to our specific dataset.
 The dataset is composed by longitudinal FLAIR MRI images of approximately 100 people treated at
 the [Hospital Clínic de Barcelona (HCB)](https://www.clinicbarcelona.org/),
 together with the target masks validated by professionals from the ImaginEM research team from the HCB.
 
 The model generated can be accessed upon a fair request.
 
+## Results
+
+We here summarize the results of our model in both the test split and the MSSEG-2 dataset.
+For the evaluation we have used the same metrics as in the MSSEG-2 challenge, 
+namely:
++ The number of wrongly detected lesion voxels on cases without lesions.
++ The number of wrongly detected lesions on cases without lesions.
++ The voxel level Dice-score on cases with lesions.
++ The lesion level F1-score on cases with lesions.
+
+### On the test split
+The following table shows the evaluation metrics on the test split.
+
+![results_table.png](nnUNet_test_results/Dataset100_MSSEG/results_table.png)
+
+Plots from the qualitative analysis can be found in [this folder](nnUNet_test_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStoppingLowLR__nnUNetPlans__3d_fullres/Analysis).
+
+### On the MSSEG-2
+The following table shows the evaluation metrics on the MSSEG-2 dataset, 
+which only has labels for new or evolving lesions, 
+together with the corresponding position in each ranking of the MSSEG-2 challenge.
+
+![MSSEG2_results_table.png](NEW_LESIONS_CHALLENGE/MSSEG2_results_table.png)
+
+Plots from the qualitative analysis can be found in [this folder](NEW_LESIONS_CHALLENGE/Analysis).
 ## Using the docker image
 
 There are two ways of building and running the Docker image,
@@ -88,24 +120,24 @@ The structure of the repository is the following:
 + `custom_scripts`: contains most of the code used in this project,
   whose names are ordered alphabetically as they have been used.
     - `others`: contains some auxiliary scripts and instructions.
-        - [A_config.py](custom_scripts/A_config.py): contains all the configuration variables and classes.
-        - [B_convert_dataset.py](custom_scripts/B_convert_dataset.py): converts the IMAGINEM dataset as downloaded
-          from the FTP server to the format required by nnU-Net v2.
-        - [C_split.py](custom_scripts/C_split.py): performs the stratified train-test and CV train-val splits,
-          and moves the test cases to the corresponding directory.
-        - [C_quantitative_analysis.py](custom_scripts/C_quantitative_analysis.py): performs the exploratory
-          quantitative analysis of the dataset.
-        - [C_qualitative_analysis.ipynb](custom_scripts/C_qualitative_analysis.ipynb): performs the exploratory
-          qualitative analysis of the dataset,
-          displaying plots of the lesions in the dataset.
-        - [D_train.py](custom_scripts/D_train.py): runs the nnU-Net Python API for model training.
-        - [E_validate.py](custom_scripts/E_validate.py): runs the nnU-Net Python API for model validation.
-        - [F_evaluate_quantitative.py](custom_scripts/F_evaluate_quantitative.py): performs the quantitative analysis
-          of the performance of our ensemble of models.
-        - [F_evaluate_qualitative.ipynb](custom_scripts/F_evaluate_qualitative.ipynb): performs the qualitative
-          analysis of the performance of our ensemble of models.
-        - [plotting.py](custom_scripts/plotting.py): contains the plotting utilities.
-        - [utils.py](custom_scripts/utils.py): contains the generic utilities.
+    - [A_config.py](custom_scripts/A_config.py): contains all the configuration variables and classes.
+    - [B_convert_dataset.py](custom_scripts/B_convert_dataset.py): converts the IMAGINEM dataset as downloaded
+      from the FTP server to the format required by nnU-Net v2.
+    - [C_split.py](custom_scripts/C_split.py): performs the stratified train-test and CV train-val splits,
+      and moves the test cases to the corresponding directory.
+    - [C_quantitative_analysis.py](custom_scripts/C_quantitative_analysis.py): performs the exploratory
+      quantitative analysis of the dataset.
+    - [C_qualitative_analysis.ipynb](custom_scripts/C_qualitative_analysis.ipynb): performs the exploratory
+      qualitative analysis of the dataset,
+      displaying plots of the lesions in the dataset.
+    - [D_train.py](custom_scripts/D_train.py): runs the nnU-Net Python API for model training.
+    - [E_validate.py](custom_scripts/E_validate.py): runs the nnU-Net Python API for model validation.
+    - [F_evaluate_quantitative.py](custom_scripts/F_evaluate_quantitative.py): performs the quantitative analysis
+      of the performance of our ensemble of models.
+    - [F_evaluate_qualitative.ipynb](custom_scripts/F_evaluate_qualitative.ipynb): performs the qualitative
+      analysis of the performance of our ensemble of models.
+    - [plotting.py](custom_scripts/plotting.py): contains the plotting utilities.
+    - [utils.py](custom_scripts/utils.py): contains the generic utilities.
 + `data`: data directory expected by nnU-Net, where the raw and preprocessed data is stored.
 + `deployment`: contains the files and scripts for the deployment of the model as a Docker container, 
   except for the [docker-compose.yml](docker-compose.yml) that can be found at the root.
