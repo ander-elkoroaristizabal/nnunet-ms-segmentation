@@ -130,7 +130,7 @@ The structure of the repository is the following:
     - [C_qualitative_analysis.ipynb](custom_scripts/C_qualitative_analysis.ipynb): performs the exploratory
       qualitative analysis of the dataset,
       displaying plots of the lesions in the dataset.
-    - [D_full_nnunet_process.sh](custom_scripts/D_full_nnunet_process.sh): bash script that runs all the standard 
+    - [D_full_nnunet_process.sh](custom_scripts/D_full_nnunet_process.sh): bash script that runs all the [standard](documentation/how_to_use_nnunet.md) 
       nnU-Net CLI steps. 
       The preprocessing of the dataset required by nnU-Net was done using the corresponding command within this script, 
       and the choice of the best configuration is also done using the command in this script.
