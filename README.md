@@ -46,7 +46,8 @@ The following table shows the evaluation metrics on the test split.
 
 ![results_table.png](nnUNet_test_results/Dataset100_MSSEG/results_table.png)
 
-Plots from the qualitative analysis can be found in [this folder](nnUNet_test_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStoppingLowLR__nnUNetPlans__3d_fullres/Analysis).
+Plots from the qualitative analysis can be found in [this folder](nnUNet_test_results/Dataset100_MSSEG/nnUNetTrainerExtremeOversamplingEarlyStoppingLowLR__nnUNetPlans__3d_fullres/Analysis),
+and the confusion matrix can be found [here](nnUNet_test_results/Dataset100_MSSEG/ConfusionMatrix.png).
 
 ### On the MSSEG-2
 The following table shows the evaluation metrics on the MSSEG-2 dataset, 
@@ -55,7 +56,9 @@ together with the corresponding position in each ranking of the MSSEG-2 challeng
 
 ![MSSEG2_results_table.png](NEW_LESIONS_CHALLENGE/MSSEG2_results_table.png)
 
-Plots from the qualitative analysis can be found in [this folder](NEW_LESIONS_CHALLENGE/Analysis).
+Plots from the qualitative analysis can be found in [this folder](NEW_LESIONS_CHALLENGE/Analysis), 
+and the confusion matrix can be found [here](NEW_LESIONS_CHALLENGE/MSSEG2ConfusionMatrix.png).
+
 ## Using the docker image
 
 There are two ways of building and running the Docker image,
