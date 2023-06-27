@@ -1,4 +1,4 @@
-﻿# Automatic detection of new or evolving lesions in Multiple Sclerosis
+﻿# Automated Identification of Initial and Progressing Multiple Sclerosis Indicators through the multiclass detection of Baseline and New Lesions
 [![License: CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 ![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg?style=for-the-badge&logo=python&logoColor=ffdd54&labelColor=blue&color=gray)
 ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
