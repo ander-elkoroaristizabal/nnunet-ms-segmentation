@@ -22,8 +22,9 @@
 
 ## Introduction
 
-This repository contains code for training Deep Learning models
-for the automatic segmentation of both basal and new or evolving Multiple Sclerosis (MS) lesions.
+This repository contains my Master's Thesis, 
+[Automated Identification of Initial and Progressing Multiple Sclerosis Indicators through the multiclass detection of Baseline and New Lesions](Thesis.pdf),
+and the related code, whose purpose is to train Deep Learning models for the automatic segmentation of both basal and new or evolving Multiple Sclerosis (MS) lesions.
 The code is an adaptation of the [nnUNet](https://github.com/MIC-DKFZ/nnUNet) to our specific dataset.
 The dataset is composed by longitudinal FLAIR MRI images of approximately 100 people treated at
 the [Hospital Clínic de Barcelona (HCB)](https://www.clinicbarcelona.org/),
